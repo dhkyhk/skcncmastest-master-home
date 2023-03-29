@@ -1,0 +1,26 @@
+22:39:48.519 [GUID] [http-nio-8081-exec-10] DEBUG api_log - ch : AppHeader(tr_type=R, ip=0:0:0:0:0:0:0:1, mac=TEMP_MAC, guid=GUID, scr_no=null, tr_cont=N, hts_id=HTS ID, sphn_os_dvsn_cd=01, rt_cd=null, msg_cd=null, msg=null, sysdate=null, msa_id=null)
+22:39:48.523 [GUID] [http-nio-8081-exec-10] DEBUG api_log - url : .demo1.controller001.login.do
+22:39:48.526 [GUID] [http-nio-8081-exec-10] DEBUG api_log - Controller001 - login START
+22:39:48.535 [GUID] [http-nio-8081-exec-10] DEBUG api_log - LoginService - login START
+22:39:48.536 [GUID] [http-nio-8081-exec-10] DEBUG api_log - INPUT : LoginRequestVO(id=TEST01, password=testPassword)
+22:39:48.582 [GUID] [http-nio-8081-exec-10] ERROR api_log - Password 입력오류
+22:39:48.597 [GUID] [http-nio-8081-exec-10] DEBUG api_log - Handled Exception :: [MYER0004]Password 값을 확인하세요.
+22:39:55.803 [GUID] [http-nio-8081-exec-1] DEBUG api_log - ch : AppHeader(tr_type=R, ip=0:0:0:0:0:0:0:1, mac=TEMP_MAC, guid=GUID, scr_no=null, tr_cont=N, hts_id=HTS ID, sphn_os_dvsn_cd=01, rt_cd=null, msg_cd=null, msg=null, sysdate=null, msa_id=null)
+22:39:55.803 [GUID] [http-nio-8081-exec-1] DEBUG api_log - url : .demo1.controller001.login.do
+22:39:55.803 [GUID] [http-nio-8081-exec-1] DEBUG api_log - Controller001 - login START
+22:39:55.807 [GUID] [http-nio-8081-exec-1] DEBUG api_log - LoginService - login START
+22:39:55.807 [GUID] [http-nio-8081-exec-1] DEBUG api_log - INPUT : LoginRequestVO(id=TEST01, password=1234)
+22:39:55.810 [GUID] [http-nio-8081-exec-1] DEBUG api_log - LoginService - login END
+22:57:00.182 [GUID] [http-nio-8081-exec-2] DEBUG api_log - ch : AppHeader(tr_type=R, ip=0:0:0:0:0:0:0:1, mac=TEMP_MAC, guid=GUID, scr_no=null, tr_cont=N, hts_id=HTS ID, sphn_os_dvsn_cd=01, rt_cd=null, msg_cd=null, msg=null, sysdate=null, msa_id=null)
+22:57:00.185 [GUID] [http-nio-8081-exec-2] DEBUG api_log - url : .demo1.controller001.login.do
+22:57:00.191 [GUID] [http-nio-8081-exec-2] DEBUG api_log - Controller001 - login START
+22:57:00.204 [GUID] [http-nio-8081-exec-2] DEBUG api_log - LoginService - login START
+22:57:00.205 [GUID] [http-nio-8081-exec-2] DEBUG api_log - INPUT : LoginRequestVO(id=TEST01, password=1234)
+22:57:00.275 [GUID] [http-nio-8081-exec-2] DEBUG api_log - LoginService - login END
+23:03:58.018 [GUID] [http-nio-8081-exec-2] DEBUG api_log - ch : AppHeader(tr_type=R, ip=0:0:0:0:0:0:0:1, mac=TEMP_MAC, guid=GUID, scr_no=null, tr_cont=N, hts_id=HTS ID, sphn_os_dvsn_cd=01, rt_cd=null, msg_cd=null, msg=null, sysdate=null, msa_id=null)
+23:03:58.023 [GUID] [http-nio-8081-exec-2] DEBUG api_log - url : .demo1.controller001.login.do
+23:03:58.028 [GUID] [http-nio-8081-exec-2] DEBUG api_log - Controller001 - login START
+23:03:58.039 [GUID] [http-nio-8081-exec-2] DEBUG api_log - LoginService - login START
+23:03:58.040 [GUID] [http-nio-8081-exec-2] DEBUG api_log - INPUT : LoginRequestVO(id=TEST01, password=1234)
+23:03:58.081 [GUID] [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - select e1_0.id,e1_0.password from employee e1_0 where e1_0.id=?
+23:03:58.101 [GUID] [http-nio-8081-exec-2] DEBUG api_log - LoginService - login END

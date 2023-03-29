@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 30초마다 설정 파일의 변경을 확인한다. 파일이 변경되면 다시 로딩한다 -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- 외부 설정파일을 사용할 수 있다. -->
+    <property resource="logback.properties"/>
+    <property name="LOG_DR" value="logs"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern> %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<file>${APP_HOME}/${LOG_DR}/webapp.log</file>-->
+        <!--<file>D:/MyPrj/skcnc/msa3/logs/webapp.log</file>-->
+        <file>${LOG_DR}/webapp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 파일이 하루에 한개씩 생성된다 -->
+            <fileNamePattern>${LOG_DR}/%d{yyyy-MM-dd}/msa-webapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- max History 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다.
+             위 설정데로 라면 30일이 지난 파일은 삭제가 된다.-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_INOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DR}/webapp-inout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 파일이 하루에 한개씩 생성된다 -->
+            <fileNamePattern>${LOG_DR}/%d{yyyy-MM-dd}/msa-webapp-inout.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- max History 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다.
+             위 설정데로 라면 30일이 지난 파일은 삭제가 된다.-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="api_console" class="ch.qos.logback.core.ConsoleAppender" additivity="false">
+        <encoder>
+            <pattern> %d{HH:mm:ss.SSS} [%X{GUID}] [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="API_FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>TRACE_ID</key>
+            <defaultValue>unknown</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="API${TRACE_ID}"
+                      class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!--<file>${APP_HOME}/${LOG_DR}/webapp-${TRACE_ID}.log</file>-->
+                <!--<file>D:/MyPrj/skcnc/msa3/logs/webapp-${TRACE_ID}.log</file>-->
+                <file>${LOG_DR}/api${TRACE_ID}.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- 파일이 하루에 한개씩 생성된다 -->
+                    <fileNamePattern>${LOG_DR}/%d{yyyy-MM-dd}/app${TRACE_ID}.%d{yyyy-MM-dd}.log</fileNamePattern>
+                    <!-- max History 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다.
+                     위 설정데로 라면 30일이 지난 파일은 삭제가 된다.-->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <encoder>
+                    <pattern> %d{HH:mm:ss.SSS} [%X{GUID}] [%thread] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- 로그단계
+         TRACE > DEBUG > INFO > WARN > ERROR -->
+
+    <!-- 아래 로그 레벨 지정한게 안먹는것 같다... spring boot 3 부터는 뭔가 다른지 모르겠다.. -->
+    <logger name="org.springframework" level="ERROR" />
+    <logger name="springfox.documentation" level="ERROR"/>
+    <logger name="org.springdoc" level="ERROR"/>
+    <logger name="io.swagger" level="ERROR"/>
+
+    <logger name="org.springframework.kafka.KafkaListenerEndpointContainer" level="ERROR"/>
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR"/>
+    <logger name="org.apache.catalina.util.LifecycleBase" level="ERROR"/>
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN"/>
+    <logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN"/>
+    <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN"/>
+    <logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR"/>
+    <logger name="org.hibernate.validator.internal.util.Version" level="WARN"/>
+    <logger name="org.springframework.boot.actuate.endpoint.jmx" level="WARN"/>
+
+    <!-- 나중에 좀더 확인 필요 카프카는 로그가 너무 많이 생기고 log4j 로 출력한 로그는  -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- api 별로 로그 분리 성공...-->
+    <logger name="api_log" level="debug" additivity="false">
+        <appender-ref ref="api_console"/>
+        <appender-ref ref="API_FILE"/>
+    </logger>
+
+    <!-- jap 쿼리 로그 API 별 분리 -->
+    <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+        <appender-ref ref="api_console"/>
+        <appender-ref ref="API_FILE"/>
+    </Logger>
+    <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="api_console"/>
+        <appender-ref ref="API_FILE"/>
+    </Logger>
+
+    <!-- IO 로그 분리 -->
+    <logger name="FILE_INOUT" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE_INOUT"/>
+    </logger>
+
+</configuration>
