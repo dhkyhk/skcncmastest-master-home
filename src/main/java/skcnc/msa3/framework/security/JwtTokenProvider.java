@@ -36,6 +36,7 @@ public class JwtTokenProvider {
     private SecretKey secretKey = null;
     private long tokenValidMillisecond;
 
+    /*
     @PostConstruct
     public void init() {
         String secretValue = AUTH_TOKEN_KEY;
@@ -49,7 +50,7 @@ public class JwtTokenProvider {
 
         tokenValidMillisecond = authTokenValidMinute * 60 * 1000L;
         log.debug("Auth Token Expire Time : {} minute", authTokenValidMinute);
-    }
+    }*/
 
     //Jwt 토큰 생성
     /**
@@ -59,6 +60,7 @@ public class JwtTokenProvider {
      * @param roles  : 부여된 권한(USER 만 허용)
      * @return
      */
+    /*
     public String createToken(String userPk, List<String> roles) {
         return createToken(userPk, roles, null);
     }
@@ -82,12 +84,13 @@ public class JwtTokenProvider {
 
         return token;
     }
-
+*/
     /**
      * @Method Name : getMydCustId
      * @description : 현재 요청의 인증된 사용자 정보를 토큰으로부터 획득하여 반환
      * @return : null 반환시 토큰이 없거나 유효하지 않은 경우임.
      */
+    /*
     public String getMsaId() {
         var attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         var req = attr.getRequest();
@@ -107,13 +110,14 @@ public class JwtTokenProvider {
             return null;
         }
     }
-
+*/
     /**
      * @Method Name : updateToken
      * @description : 현재의 토큰 유효기간을 갱신처리한다.
      * @param jwtToken
      * @return
      */
+    /*
     public String updateToken(String jwtToken) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(secretKey)
@@ -211,5 +215,5 @@ public class JwtTokenProvider {
             }
         }
         return null;
-    }
+    }*/
 }

@@ -74,3 +74,30 @@
 58649 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
 58650 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 58662 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+595  [main] INFO  skcnc.msa3.Msa3Application - Starting Msa3Application using Java 21.0.2 with PID 15656 (C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home\target\classes started by Administrator in C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home)
+597  [main] INFO  skcnc.msa3.Msa3Application - The following 1 profile is active: "local"
+1806 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+1806 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+1886 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+1979 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+2291 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2630 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@66682e8f
+2631 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2681 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3219 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3239 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+3272 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+3377 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@70b0dc92
+3377 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+3396 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3414 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3554 [main] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+5482 [main] INFO  skcnc.msa3.Msa3Application - Started Msa3Application in 5.21 seconds (process running for 6.264)
+29230 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+50013 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+50014 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+50023 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+50029 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+50030 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+50033 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

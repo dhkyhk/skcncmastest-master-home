@@ -19,18 +19,17 @@ spring:
     hibernate.ddl-auto: none
   primary:
     datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      #jdbc-url: jdbc:mariadb://inno3t2:4121/my_db?useUnicode=true&serverTimezone=Asia/Seoul # 회사에서 테스트용
-      jdbc-url: jdbc:mariadb://localhost:3306/customer?useUnicode=true&serverTimezone=Asia/Seoul # 집 로컬 docker 에서 테스트용
-      username: root
-      password: root
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      username: postgres
+      password: asdfg12345
   secondary:
     datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      #jdbc-url: jdbc:mariadb://inno3t2:4121/samplea?useUnicode=true&serverTimezone=Asia/Seoul # 회사에서 테스트용
-      jdbc-url: jdbc:mariadb://localhost:3306/account?useUnicode=true&serverTimezone=Asia/Seoul # 집 로컬 docker 에서 테스트용
-      username: root
-      password: root
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      username: postgres
+      password: asdfg12345
+      
   kafka:
     name: sampleAChanged
     producer:
@@ -43,25 +42,27 @@ spring:
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
   messages:
     basename: messages/messages #message.properties 경로  messages 폴더 밑으로 모아 놓음
     encoding: utf-8
     cache-duration: 600 #600초 10분 마다 설정 파일 리로딩.
 
-kafka:
-  send:
-    topic: sampleCChanged
-    group_id: msa3
-  rev:
-    topic: sampleAChanged
-    group_id: msa3
+#카프카 구현 하면 추가하자..
+#kafka:
+#  send:
+#    topic: sampleCChanged
+#    group_id: msa3
+#  rev:
+#    topic: sampleAChanged
+#    group_id: msa3
 
 msa3:
   swagger:
     enabled: true
   auth:
     token: #인증 토큰 정보
-      secret: "TOKEN_SECURITY_KEY_가나다라마바사아자차카타파하" # 키문자열 또는 키파일 경로 너무 짧게 적으면 오류남.
+      secret: ZmluYW5jZS1tc2EtYmFja2VuZC1qd3Qtc2VjcmV0LWZpbmFuY2UtbXNhLWJhY2tlbmQtand0LXNlY3JldC1maW5hbmNlLW1zYS1iYWNrZW5kLWp3dC1zZWNyZXQK
       valid-minute: 30 #30분
 
 

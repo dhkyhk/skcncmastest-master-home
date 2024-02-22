@@ -1,15 +1,14 @@
 package skcnc.msa3.framework.utils;
 
 //import javax.servlet.http.HttpServletRequest;
-
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 
-
 public class ServletUtil {
-    /**
+	
+	/**
      * @Method Name : getUserIp
      * @description : 서버에 접근한 사용자 IP 획득(현재 쓰레드의 요청 헤더에서 ip 추출)
      * @return
@@ -30,6 +29,7 @@ public class ServletUtil {
     public static String getUserIp(HttpServletRequest req) {
         if(req == null) return null;
         String ip = null;
+        
         ip = req.getHeader("X-Forwarded-For");
         if(ip != null) return ip;
 
