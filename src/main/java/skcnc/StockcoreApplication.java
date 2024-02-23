@@ -1,4 +1,4 @@
-package skcnc.stockcore;
+package skcnc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +14,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableFeignClients
-public class Msa3Application{
+public class StockcoreApplication{
 	public static void main(String[] args) {
-		SpringApplication.run(Msa3Application.class, args);
+		SpringApplication.run(StockcoreApplication.class, args);
 	}
 }

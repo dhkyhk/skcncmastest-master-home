@@ -1,12 +1,13 @@
-package skcnc.msa3.domain.repository;
+package skcnc.stockcore.domain;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public class PrimaryDbioMapper extends AbstractMapper {
-    public PrimaryDbioMapper(@Qualifier("primarySqlSessionTemplate") SqlSession sqlSession) {
+public class DbioMapperbatis extends AbstractMapper {
+    public DbioMapperbatis(@Qualifier("sqlSession") SqlSession sqlSession) {
         super(sqlSession);
     }
 }

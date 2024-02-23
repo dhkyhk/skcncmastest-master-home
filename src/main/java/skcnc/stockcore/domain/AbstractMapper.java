@@ -1,4 +1,4 @@
-package skcnc.msa3.domain.repository;
+package skcnc.stockcore.domain;
 
 import java.util.List;
 

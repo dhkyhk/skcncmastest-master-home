@@ -2,8 +2,8 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.primary.employeemapper">
-    <select id="selectone" parameterType="skcnc.msa3.framework.database.MetaHashMap" resultType="skcnc.msa3.framework.database.MetaHashMap">
+<mapper namespace="mapper.employeemapper">
+    <select id="selectone" parameterType="skcnc.stockcore.framework.database.MetaHashMap" resultType="skcnc.stockcore.framework.database.MetaHashMap">
         <![CDATA[
         select id
              , password
@@ -11,7 +11,7 @@
          where id = #{id}
         ]]>
     </select>
-    <select id="selectarray" parameterType="skcnc.msa3.framework.database.MetaHashMap" resultType="skcnc.msa3.framework.database.MetaHashMap">
+    <select id="selectarray" parameterType="skcnc.stockcore.framework.database.MetaHashMap" resultType="skcnc.stockcore.framework.database.MetaHashMap">
         <![CDATA[
         select id
              , password

@@ -9,39 +9,35 @@ server:
 spring:
   profiles:
     active: ${running.profile:local}
-  jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-        use_sql_comments: true
-    generate-ddl: true
-    hibernate.ddl-auto: none
-  primary:
-    datasource:
-      driver-class-name: org.postgresql.Driver
-      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
-      username: postgres
-      password: asdfg12345
-  secondary:
-    datasource:
-      driver-class-name: org.postgresql.Driver
-      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
-      username: postgres
-      password: asdfg12345
+#  jpa:
+#    show_sql: true
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: none
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: org.postgresql.Driver
+#    jdbcUrl: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+#    username: postgres
+#    password: asdfg12345
+#    hikari:
+#      poolName: coreDbPool
+#      connectionTimeout: 10
+#      maximumPoolSize: 10
+#      minimumIdle: 1       
       
-  kafka:
-    name: sampleAChanged
-    producer:
-      bootstrap-servers: inno3t2:4192
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    consumer:
-      bootstrap-servers: inno3t2:4192
-      group-id: msa3
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  kafka:
+#    name: stockcore
+#    producer:
+#      bootstrap-servers: inno3t2:4192
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#    consumer:
+#      bootstrap-servers: inno3t2:4192
+#      group-id: stockcore
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
   messages:
     basename: messages/messages #message.properties 경로  messages 폴더 밑으로 모아 놓음
@@ -57,7 +53,7 @@ spring:
 #    topic: sampleAChanged
 #    group_id: msa3
 
-msa3:
+stockcore:
   swagger:
     enabled: true
   auth:
