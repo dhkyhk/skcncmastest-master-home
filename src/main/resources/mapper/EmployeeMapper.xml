@@ -2,16 +2,23 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.employeemapper">
-    <select id="selectone" parameterType="skcnc.stockcore.framework.database.MetaHashMap" resultType="skcnc.stockcore.framework.database.MetaHashMap">
+<mapper namespace="mapper.ac.common.cmcsinfoinqrymapper">
+    <select id="selectone" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
         <![CDATA[
-        select id
-             , password
-          from employee
-         where id = #{id}
+   SELECT *
+     FROM ACA1100
+    WHERE cif = #{cif}
+      AND use_yn = 'Y'
+      AND (cif, ctdt_dcd, regi_sno)
+       IN (  SELECT cif, ctdt_dcd, MAX(regi_sno) AS regi_sno
+               FROM ACA1100 X
+              WHERE cif = 입력값.고객식별번호
+                AND use_yn = 'Y'
+              GROUP BY cif, ctdt_dcd
+           )
         ]]>
     </select>
-    <select id="selectarray" parameterType="skcnc.stockcore.framework.database.MetaHashMap" resultType="skcnc.stockcore.framework.database.MetaHashMap">
+    <select id="selectarray" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
         <![CDATA[
         select id
              , password

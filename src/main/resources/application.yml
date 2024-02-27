@@ -9,11 +9,58 @@ server:
 spring:
   profiles:
     active: ${running.profile:local}
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://db-postgres-secmsa-core.cfgq2mm0w8uf.ap-northeast-2.rds.amazonaws.com:5432/postgres
+#    username: postgres
+#    password: asdfg12345
+  #멀티 DB 설정
+  # primary db
+  datasource:
+    primary:
+      jdbc-url: jdbc:postgresql://db-postgres-secmsa-core.cfgq2mm0w8uf.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      driver-class-name: org.postgresql.Driver
+      username: postgres
+      password: asdfg12345
+#    hibernate:
+#      connection:
+#        url: jdbc:postgresql://db-postgres-secmsa-core.cfgq2mm0w8uf.ap-northeast-2.rds.amazonaws.com:5432/postgres
+#      dialect: org.hibernate.dialect.PostgreSQL9Dialect
+#      jdbc.batch_size: 490
+#      jdbc.fetch_size: 490                    
+#      hbm2ddl.auto: none
+#      show_sql: false
+#      ddl-auto: none
+  # secondary db - 그냥 이전에 사용 했던 DB로 일단 설정하자..
+    secondary:
+      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      driver-class-name: org.postgresql.Driver
+      username: postgres
+      password: asdfg12345
+#    hibernate:
+#      connection:
+#        url: postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+#      dialect: org.hibernate.dialect.PostgreSQL9Dialect
+#      jdbc.batch_size: 490
+#      jdbc.fetch_size: 490                    
+#      hbm2ddl.auto: none
+#      show_sql: false
+#      ddl-auto: none
 #  jpa:
-#    show_sql: true
-#    generate-ddl: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
 #    hibernate:
 #      ddl-auto: none
+#    open-in-view : false #트렌젝션 종료되면 commit 되게.
+#    show_sql: true
+#    generate-ddl: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
+
+
+
 #  datasource:
 #    type: com.zaxxer.hikari.HikariDataSource
 #    driver-class-name: org.postgresql.Driver
@@ -25,6 +72,7 @@ spring:
 #      connectionTimeout: 10
 #      maximumPoolSize: 10
 #      minimumIdle: 1       
+
       
 #  kafka:
 #    name: stockcore

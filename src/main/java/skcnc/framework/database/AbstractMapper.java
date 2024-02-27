@@ -1,4 +1,4 @@
-package skcnc.stockcore.domain;
+package skcnc.framework.database;
 
 import java.util.List;
 
