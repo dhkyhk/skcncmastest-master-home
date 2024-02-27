@@ -299,3 +299,88 @@ java.lang.IllegalArgumentException: Invalid character found in the request targe
 73246 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
 73246 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 73299 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+487  [main] INFO  skcnc.StockcoreApplication - Starting StockcoreApplication using Java 21.0.2 with PID 21392 (C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home\target\classes started by Administrator in C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home)
+489  [main] INFO  skcnc.StockcoreApplication - The following 1 profile is active: "local"
+1436 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.stockcore.**.dao.mapper, classpath*:/skcnc/stockcore/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+1642 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.sup.**.dao.mapper, classpath*:/skcnc/sup/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+1994 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+1994 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2077 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2174 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: persistence]
+2209 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+2452 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2839 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43e7f104
+2840 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2863 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3091 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3115 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: secondPersistence]
+3153 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+3305 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@2ecc4be7
+3305 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+3313 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3333 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3479 [main] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+5183 [main] INFO  skcnc.StockcoreApplication - Started StockcoreApplication in 4.978 seconds (process running for 5.859)
+8643 [RMI TCP Connection(6)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+8651 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+8656 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+8656 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+8720 [RMI TCP Connection(6)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+528  [main] INFO  skcnc.StockcoreApplication - Starting StockcoreApplication using Java 21.0.2 with PID 22352 (C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home\target\classes started by Administrator in C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home)
+530  [main] INFO  skcnc.StockcoreApplication - The following 1 profile is active: "local"
+1531 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.stockcore.**.dao.mapper, classpath*:/skcnc/stockcore/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+1777 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.sup.**.dao.mapper, classpath*:/skcnc/sup/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+2119 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2120 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2199 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2282 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: persistence]
+2329 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+2563 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2871 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e595da3
+2872 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2896 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3107 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3132 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: secondPersistence]
+3165 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+3309 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@47c15468
+3309 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+3318 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3338 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3497 [main] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+5122 [main] INFO  skcnc.StockcoreApplication - Started StockcoreApplication in 4.896 seconds (process running for 5.848)
+10116 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+28920 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+28921 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+28929 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+28933 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+28934 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+28986 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+529  [main] INFO  skcnc.StockcoreApplication - Starting StockcoreApplication using Java 21.0.2 with PID 2912 (C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home\target\classes started by Administrator in C:\SK-Project\MyMsaPrj\MyMsaDemo\skcncmastest-master-home)
+530  [main] INFO  skcnc.StockcoreApplication - The following 1 profile is active: "local"
+1500 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.stockcore.**.dao.mapper, classpath*:/skcnc/stockcore/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+1731 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[skcnc.sup.**.dao.mapper, classpath*:/skcnc/sup/**/dao/mapper/*Mapper.xml]' package. Please check your configuration.
+2086 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2086 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2170 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2265 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: persistence]
+2303 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+2551 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2877 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1f547af8
+2878 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2901 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3112 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3130 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: secondPersistence]
+3166 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+3312 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@71098fb3
+3312 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+3321 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+3343 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+3492 [main] WARN  o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was specified but matching resources are not found.
+5439 [main] INFO  skcnc.StockcoreApplication - Started StockcoreApplication in 5.212 seconds (process running for 6.135)
+20399 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+43992 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+43993 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+44003 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+44007 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+44007 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+44059 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
