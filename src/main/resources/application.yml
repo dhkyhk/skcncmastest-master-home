@@ -33,10 +33,11 @@ spring:
 #      ddl-auto: none
   # secondary db - 그냥 이전에 사용 했던 DB로 일단 설정하자..
     secondary:
-      jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      #jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
+      jdbc-url: jdbc:postgresql://10.250.140.97:5432/postgres
       driver-class-name: org.postgresql.Driver
       username: postgres
-      password: asdfg12345
+      password: 1q2w3e4r
 #    hibernate:
 #      connection:
 #        url: postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
