@@ -57,6 +57,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.0.4</version>
 		</dependency>
+		<!-- swagger 커스터마이징 -->
+        <dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
         
 		<!--  kafka  -->
 		<dependency>
@@ -167,66 +174,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-
-        <!--
-        일단 불필요한 것으로 판단 되는것들은 모아서 주석 처리하자.
-        
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-
-		feign 추가시 오류가 나서 추가함-일단 제외하고 필요하면 다시 추가하자...
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
-		</dependency>
-		-->
-
-		<!-- jpa query 로그 출력..
-		  https://bigpel66.oopy.io/9d8b01ea-3256-4be8-8517-c67bd7db4567 나중에 확인하고 추가하자...
-		<dependency>
-			<groupId>com.github.gavlyukovskiy</groupId>
-			<artifactId>p6spy-spring-boot-starter</artifactId>
-			<version>1.9.0</version>
-		</dependency>
-		-->
-		
-		
-		<!-- aop - 추후 필요하면 주석 제거하고 사용하자.. -->
-		<!--<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.9.19</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.9.19</version>
-		</dependency>-->
-
-		<!-- 유효성 검사기 vo 등에서 제약사항 등 지정
-		<dependency> 
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		-->
-	
-		<!--<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
-			<version>1.4.7.RELEASE</version>
-		</dependency>-->
 
 	</dependencies>
 

@@ -22,58 +22,20 @@ spring:
       driver-class-name: org.postgresql.Driver
       username: postgres
       password: asdfg12345
-#    hibernate:
-#      connection:
-#        url: jdbc:postgresql://db-postgres-secmsa-core.cfgq2mm0w8uf.ap-northeast-2.rds.amazonaws.com:5432/postgres
-#      dialect: org.hibernate.dialect.PostgreSQL9Dialect
-#      jdbc.batch_size: 490
-#      jdbc.fetch_size: 490                    
-#      hbm2ddl.auto: none
-#      show_sql: false
-#      ddl-auto: none
   # secondary db - 그냥 이전에 사용 했던 DB로 일단 설정하자..
     secondary:
-      #jdbc-url: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
-      jdbc-url: jdbc:postgresql://10.250.140.97:5432/postgres
+      #금융서버
+      #jdbc-url: jdbc:postgresql://10.250.140.97:5432/postgres 
+      jdbc-url: jdbc:postgresql://db-postgres-secmsa-core.cfgq2mm0w8uf.ap-northeast-2.rds.amazonaws.com:5432/postgres
       driver-class-name: org.postgresql.Driver
       username: postgres
-      password: 1q2w3e4r
-#    hibernate:
-#      connection:
-#        url: postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
-#      dialect: org.hibernate.dialect.PostgreSQL9Dialect
-#      jdbc.batch_size: 490
-#      jdbc.fetch_size: 490                    
-#      hbm2ddl.auto: none
-#      show_sql: false
-#      ddl-auto: none
-#  jpa:
-#    database: postgresql
-#    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
-#    hibernate:
-#      ddl-auto: none
-#    open-in-view : false #트렌젝션 종료되면 commit 되게.
-#    show_sql: true
-#    generate-ddl: true
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+      password: asdfg12345
+      #금융서버 비밀번호
+      #password: 1q2w3e4r
 
-
-
-
-#  datasource:
-#    type: com.zaxxer.hikari.HikariDataSource
-#    driver-class-name: org.postgresql.Driver
-#    jdbcUrl: jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres
-#    username: postgres
-#    password: asdfg12345
-#    hikari:
-#      poolName: coreDbPool
-#      connectionTimeout: 10
-#      maximumPoolSize: 10
-#      minimumIdle: 1       
-
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
       
 #  kafka:
 #    name: stockcore
@@ -110,4 +72,13 @@ stockcore:
       secret: ZmluYW5jZS1tc2EtYmFja2VuZC1qd3Qtc2VjcmV0LWZpbmFuY2UtbXNhLWJhY2tlbmQtand0LXNlY3JldC1maW5hbmNlLW1zYS1iYWNrZW5kLWp3dC1zZWNyZXQK
       valid-minute: 30 #30분
 
+#springdoc:
+#  packages-to-scan: skcnc.stockcore
+#  default-consumes-media-type: application/json;charset=UTF-8
+#  default-produces-media-type: application/json;charset=UTF-8
+#  swagger-ui:
+#    path: /swagger-ui/index.html
+#    disable-swagger-default-url: true
+#    display-request-duration: true
+#    operations-sorter: alpha
 
