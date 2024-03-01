@@ -1,9 +1,6 @@
 package skcnc.framework.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import skcnc.framework.database.DbioMapperbatis;
 import skcnc.framework.model.AppHeader;

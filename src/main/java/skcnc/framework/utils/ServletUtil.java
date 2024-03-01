@@ -1,9 +1,10 @@
 package skcnc.framework.utils;
 
-//import javax.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+//import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 public class ServletUtil {

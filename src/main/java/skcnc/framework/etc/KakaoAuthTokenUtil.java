@@ -1,7 +1,6 @@
 package skcnc.framework.etc;
 
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpEntity;
@@ -15,13 +14,10 @@ import org.springframework.util.MultiValueMap;
 import skcnc.framework.common.ContextStoreHelper;
 
 @Component
-public class KakaoAuthTokenUtil extends HttpCallService{
+public class KakaoAuthTokenUtil {
 	private static final String AUTH_URL = "https://kauth.kakao.com/oauth/token";
 	public static String authToken = null;
 
-	@Autowired
-	HttpCallService httpCallService;
-	
 	public boolean getKakaoAuthToken(String code)  {
 		
 		Logger log = ContextStoreHelper.getLog();
@@ -32,7 +28,7 @@ public class KakaoAuthTokenUtil extends HttpCallService{
 			String refrashToken = "";
 			MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
 
-			header.set("Content-Type", APP_TYPE_URL_ENCODED);
+			header.set("Content-Type", HttpCallService.APP_TYPE_URL_ENCODED);
 
 			parameters.add("code", code);
 			parameters.add("grant_type", "authorization_code");
@@ -40,9 +36,9 @@ public class KakaoAuthTokenUtil extends HttpCallService{
 			parameters.add("redirect_url", "http://localhost:88");
 			parameters.add("client_secret", "your client secret");
 
-			HttpEntity<?> requestEntity = httpClientEntity(header, parameters);
+			HttpEntity<?> requestEntity = HttpCallService.httpClientEntity(header, parameters);
 
-			ResponseEntity<String> response = httpCallService.httpRequest(AUTH_URL, HttpMethod.POST, requestEntity);
+			ResponseEntity<String> response = HttpCallService.httpRequest(AUTH_URL, HttpMethod.POST, requestEntity);
 			JSONObject jsonData = new JSONObject(response.getBody());
 			accessToken = jsonData.get("access_token").toString();
 			refrashToken = jsonData.get("refresh_token").toString();

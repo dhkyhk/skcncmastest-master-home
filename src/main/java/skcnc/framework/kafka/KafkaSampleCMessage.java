@@ -1,7 +1,6 @@
 package skcnc.framework.kafka;
 
 import lombok.Data;
-import lombok.Setter;
 
 @Data
 public class KafkaSampleCMessage {

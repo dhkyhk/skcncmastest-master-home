@@ -1,7 +1,6 @@
 package skcnc.framework.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import skcnc.framework.database.DbioMapperbatis;
 import skcnc.framework.model.AppHeader;

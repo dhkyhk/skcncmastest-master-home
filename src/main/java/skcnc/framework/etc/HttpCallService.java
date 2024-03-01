@@ -6,10 +6,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Component
 public class HttpCallService {
 	
 	protected static final String APP_TYPE_URL_ENCODED = "application/x-www-form-urlencoded;charset=UTF-8";
@@ -23,7 +21,7 @@ public class HttpCallService {
 	* @ return HttpEntity 생성된 HttpClient객체 정보 반환
 	* @ exception 예외사항
 	*/
-    public HttpEntity<?> httpClientEntity(HttpHeaders header, Object params) {
+    public static HttpEntity<?> httpClientEntity(HttpHeaders header, Object params) {
     	HttpHeaders requestHeaders = header;
 
         if (params == null || "".equals(params))
@@ -40,7 +38,7 @@ public class HttpCallService {
 	* @ param  HttpEntity<?> entity 요청 EntityClient 객체 정보
 	* @ return HttpEntity 생성된 HttpClient객체 정보 반환
 	*/
-    public ResponseEntity<String> httpRequest(String url, HttpMethod method, HttpEntity<?> entity){
+    public static ResponseEntity<String> httpRequest(String url, HttpMethod method, HttpEntity<?> entity){
 		RestTemplate restTemplate = new RestTemplate();
     	return restTemplate.exchange(url, method, entity,String.class);
     }
@@ -53,7 +51,7 @@ public class HttpCallService {
 	* @ param  HttpEntity<?> entity 요청 EntityClient 객체 정보
 	* @ return HttpEntity 생성된 HttpClient객체 정보 반환
 	*/
-    public ResponseEntity<String> httpRequest(URI url, HttpMethod method, HttpEntity<?> entity){
+    public static ResponseEntity<String> httpRequest(URI url, HttpMethod method, HttpEntity<?> entity){
 		RestTemplate restTemplate = new RestTemplate();
     	return restTemplate.exchange(url, method, entity,String.class);
     }

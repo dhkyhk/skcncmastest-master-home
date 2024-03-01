@@ -3,17 +3,12 @@ package skcnc.stockcore.ca.common;
 import java.util.Map;
 
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import skcnc.framework.common.AppCommonModule;
 import skcnc.framework.common.ContextStoreHelper;
 import skcnc.framework.database.MetaHashMap;
 import skcnc.framework.utils.MapperUtil;
-import skcnc.framework.utils.StringUtils;
 import skcnc.stockcore.ca.dao.table.Caa1000Table;
 
 @Component

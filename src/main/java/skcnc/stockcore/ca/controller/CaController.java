@@ -105,8 +105,8 @@ public class CaController extends AppCommonController{
 		return makeResponse(inData.getHead(), outVo, "MYOK1001", "로그아웃" );
 	}
 
-	@Operation(summary = "로그아웃처리", description = "로그아웃 처리 JWT 토큰이 저장된 쿠키 삭제")
-	@PostMapping("/auth/logout")
+	@Operation(summary = "카카오로 메시지 전송", description = "카카오로 메시지 전송")
+	@PostMapping("/kakaosend")
 	public AppResponse<PrcsNotfOutVO> prcsNotf(@RequestBody AppRequest<PrcsNotfInVO> inData)
 	{
 		return notfMangService.prcsNotf(inData);

@@ -14,7 +14,7 @@ import org.springframework.util.MultiValueMap;
 import skcnc.framework.common.ContextStoreHelper;
 
 @Component
-public class MessageService extends HttpCallService{
+public class MessageService {
 	
 	private static final String MSG_SEND_SERVICE_URL = "https://kapi.kakao.com/v2/api/talk/memo/default/send";
 	private static final String SEND_SUCCESS_MSG = "메시지 전송에 성공했습니다.";
@@ -38,16 +38,16 @@ public class MessageService extends HttpCallService{
 
 
 			HttpHeaders header = new HttpHeaders();
-			header.set("Content-Type", APP_TYPE_URL_ENCODED);
+			header.set("Content-Type", HttpCallService.APP_TYPE_URL_ENCODED);
 			header.set("Authorization", "Bearer " + accessToken);
 
 			MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
 			parameters.add("template_object", templateObj.toString());
 
-			HttpEntity<?> messageRequestEntity = httpClientEntity(header, parameters);
+			HttpEntity<?> messageRequestEntity = HttpCallService.httpClientEntity(header, parameters);
 
 			String resultCode = "";
-			ResponseEntity<String> response = httpRequest(MSG_SEND_SERVICE_URL, HttpMethod.POST, messageRequestEntity);
+			ResponseEntity<String> response = HttpCallService.httpRequest(MSG_SEND_SERVICE_URL, HttpMethod.POST, messageRequestEntity);
 			JSONObject jsonData = new JSONObject(response.getBody());
 			resultCode = jsonData.get("result_code").toString();
 
