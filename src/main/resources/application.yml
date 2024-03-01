@@ -71,14 +71,3 @@ stockcore:
     token: #인증 토큰 정보
       secret: ZmluYW5jZS1tc2EtYmFja2VuZC1qd3Qtc2VjcmV0LWZpbmFuY2UtbXNhLWJhY2tlbmQtand0LXNlY3JldC1maW5hbmNlLW1zYS1iYWNrZW5kLWp3dC1zZWNyZXQK
       valid-minute: 30 #30분
-
-#springdoc:
-#  packages-to-scan: skcnc.stockcore
-#  default-consumes-media-type: application/json;charset=UTF-8
-#  default-produces-media-type: application/json;charset=UTF-8
-#  swagger-ui:
-#    path: /swagger-ui/index.html
-#    disable-swagger-default-url: true
-#    display-request-duration: true
-#    operations-sorter: alpha
-

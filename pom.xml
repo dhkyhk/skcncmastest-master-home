@@ -14,9 +14,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>skcnc</groupId>
-	<artifactId>msa3</artifactId>
+	<artifactId>stockcore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>msa3</name>
+	<name>stockcore</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>

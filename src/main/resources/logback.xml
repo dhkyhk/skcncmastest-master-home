@@ -12,8 +12,6 @@
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--<file>${APP_HOME}/${LOG_DR}/webapp.log</file>-->
-        <!--<file>D:/MyPrj/skcnc/msa3/logs/webapp.log</file>-->
         <file>${LOG_DR}/webapp.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 파일이 하루에 한개씩 생성된다 -->
@@ -56,8 +54,6 @@
         <sift>
             <appender name="API${TRACE_ID}"
                       class="ch.qos.logback.core.rolling.RollingFileAppender">
-                <!--<file>${APP_HOME}/${LOG_DR}/webapp-${TRACE_ID}.log</file>-->
-                <!--<file>D:/MyPrj/skcnc/msa3/logs/webapp-${TRACE_ID}.log</file>-->
                 <file>${LOG_DR}/api${TRACE_ID}.log</file>
                 <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                     <!-- 파일이 하루에 한개씩 생성된다 -->
