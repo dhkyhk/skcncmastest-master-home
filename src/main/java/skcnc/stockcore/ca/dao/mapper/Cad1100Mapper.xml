@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ca.common.cad1100mapper">
+    <select id="selectcad1100one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  
+        wrk_dt_dcd
+     ,  bef_4_dt
+     ,  bef_3_dt
+     ,  bef_2_dt
+     ,  bef_dt
+     ,  prs_dt
+     ,  aft_dt
+     ,  aft_2_dt
+     ,  aft_3_dt
+     ,  aft_4_dt
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAD1100 A
+ WHERE  A.wrk_dt_dcd = #{wrk_dt_dcd}
+]]>
+    </select>
+    <select id="selectcaa1000multi" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  
+        wrk_dt_dcd
+     ,  bef_4_dt
+     ,  bef_3_dt
+     ,  bef_2_dt
+     ,  bef_dt
+     ,  prs_dt
+     ,  aft_dt
+     ,  aft_2_dt
+     ,  aft_3_dt
+     ,  aft_4_dt
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAD1100 A
+ ORDER  BY wrk_dt_dcd
+ ]]>
+    </select>
+    <insert id="insertcad1100one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+INSERT 
+  INTO CAD1100
+(
+   wrk_dt_dcd
+,  bef_4_dt
+,  bef_3_dt
+,  bef_2_dt
+,  bef_dt
+,  prs_dt
+,  aft_dt
+,  aft_2_dt
+,  aft_3_dt
+,  aft_4_dt
+     
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{wrk_dt_dcd}
+,  #{bef_4_dt}
+,  #{bef_3_dt}
+,  #{bef_2_dt}
+,  #{bef_dt}
+,  #{prs_dt}
+,  #{aft_dt}
+,  #{aft_2_dt}
+,  #{aft_3_dt}
+,  #{aft_4_dt}
+
+,  COALESCE( #{opr_dttm}, NOW() )
+,  #{opr_id}
+,  #{opr_trd_id}
+,  #{opr_tmn_id}
+)
+]]>
+    </insert>
+    <delete id="deletecad1100multi" parameterType="String">
+<![CDATA[
+DELETE
+  FROM CAD1100 A
+WHERE  A.wrk_dt_dcd LIKE #{wrk_dt_dcd} || '%'
+]]>
+	</delete>	 
+</mapper>

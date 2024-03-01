@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ca.common.cmempinfomangmapper">
+    <select id="selectcaa1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  emp_no
+     ,  hofe_dcd
+     ,  joco_dt
+     ,  retco_dt
+     ,  emp_nm
+     ,  mail
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  dept_no
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAA1000 A
+ WHERE  A.emp_no = #{emp_no}
+]]>
+    </select>
+    <select id="selectcaa1000Maxone" resultType="String">
+<![CDATA[
+SELECT  LPAD(
+             CAST(
+                  CAST( 
+                       COALESCE( MAX(emp_no),'0') AS INTEGER) + 1 
+                  AS TEXT
+             ), 6, '0' ) AS MAX_NO
+  FROM  CAA1000 A
+ WHERE  emp_no LIKE '0%'
+ ]]>
+    </select>
+    <insert id="insertcaa1000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+INSERT 
+  INTO CAA1000
+(
+   emp_no
+,  hofe_dcd
+,  joco_dt
+,  retco_dt
+,  emp_nm
+,  mail
+,  tel_area_no
+,  tel_ptcl_area_no
+,  enc_tel_nd_no
+,  enc_pwd
+,  pwd_regi_dt
+,  pwd_err_cnt
+,  dept_no
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{emp_no}
+,  #{hofe_dcd}
+,  #{joco_dt}
+,  #{retco_dt}
+,  #{emp_nm}
+,  #{mail}
+,  #{tel_area_no}
+,  #{tel_ptcl_area_no}
+,  #{enc_tel_nd_no}
+,  #{enc_pwd}
+,  #{pwd_regi_dt}
+,  #{pwd_err_cnt}
+,  #{dept_no}
+,  NOW()
+,  #{opr_id}
+,  #{opr_trd_id}
+,  #{opr_tmn_id}
+)
+]]>
+    </insert>
+    
+    <update id="updatecaa1000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  CAA1000
+   SET  hofe_dcd     = #{hofe_dcd}
+     ,  joco_dt      = #{joco_dt}
+     ,  retco_dt     = #{retco_dt}
+     
+     ,  emp_nm           = #{emp_nm}
+     ,  mail             = #{mail}
+     ,  tel_area_no      = #{tel_area_no}
+     ,  tel_ptcl_area_no = #{tel_ptcl_area_no}
+     ,  enc_tel_nd_no    = #{enc_tel_nd_no}
+     
+     ,  enc_pwd      = #{enc_pwd}
+     ,  pwd_regi_dt  = #{pwd_regi_dt}
+     ,  pwd_err_cnt  = #{pwd_err_cnt}
+     ,  dept_no      = #{dept_no}
+
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE  emp_no = #{emp_no}
+]]>
+	</update>
+	
+    <update id="updatecaa1000errcnt" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  CAA1000
+   SET  pwd_err_cnt  = #{pwd_err_cnt} 
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE  emp_no = #{emp_no}
+]]>
+	</update>
+</mapper>
