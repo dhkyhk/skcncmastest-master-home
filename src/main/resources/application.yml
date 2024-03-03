@@ -71,3 +71,10 @@ stockcore:
     token: #인증 토큰 정보
       secret: ZmluYW5jZS1tc2EtYmFja2VuZC1qd3Qtc2VjcmV0LWZpbmFuY2UtbXNhLWJhY2tlbmQtand0LXNlY3JldC1maW5hbmNlLW1zYS1iYWNrZW5kLWp3dC1zZWNyZXQK
       valid-minute: 30 #30분
+
+#developers.kakao.com  
+kako:
+  native: 7867fd79c0f8c05701de0156d1cf9ac0
+  restapi: 207f20eef7f66d7f8f212ce5a75c7606
+  javascript: 0c1594a9d8e8668994f2b6f5711f4882
+  adminkey: 69cbf5b366243c0780359e059791bc58

@@ -23,6 +23,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import skcnc.framework.database.MetaCommonInterceptor;
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppRequest;
+import skcnc.framework.security.service.AuthUserDetailVO;
 import skcnc.framework.utils.ServletUtil;
 
 @RestControllerAdvice

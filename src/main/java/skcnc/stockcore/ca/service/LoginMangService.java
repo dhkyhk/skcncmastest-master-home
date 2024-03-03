@@ -84,8 +84,8 @@ public class LoginMangService extends AppCommonService {
 			
 			BeanUtils.copyProperties(caa100, outVo);
 			
-			//토큰 생성
-			String jwtToken = jwtTokenProvider.createToken( inData.getBody().getEmp_no(), Arrays.asList("USER"));
+			//토큰 생성 - 관리자용 
+			String jwtToken = jwtTokenProvider.createToken( inData.getBody().getEmp_no(), Arrays.asList("ADMIN"));
 			outVo.setToken(jwtToken);
 			
 			log.error( "처리완료 되었습니다. : {}", outVo );
