@@ -40,7 +40,7 @@ public class CsfInfoMangModule extends AppCommonModule {
 		dbio.insert( "mapper.ac.aca1000mapper.insertaca1000one", insMap );
 	}
 	
-	public boolean procCifInfoChg( Aca1000Table aca1000Vo )
+	public void procCifInfoChg( Aca1000Table aca1000Vo )
 	{
 		Map<String, Object> insMap = new MetaHashMap(); 
 		insMap = MapperUtil.toMap(aca1000Vo);
@@ -52,7 +52,6 @@ public class CsfInfoMangModule extends AppCommonModule {
 			//MYER0005={0} 처리중 오류가 발생했습니다.
 			throw makeException( "MYER0005", "고객정보 변경" );
 		}
-		return true;
 	}
 	
 	public boolean getPwdCheck( String cif, String pwd )

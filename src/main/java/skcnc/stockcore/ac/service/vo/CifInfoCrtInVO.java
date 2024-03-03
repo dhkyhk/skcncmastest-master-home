@@ -95,6 +95,6 @@ public class CifInfoCrtInVO {
     private String job_dcd;             //직업구분코드
 	
 	@Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "고객연락처")
-	List<CifInfoCrtInArryVO> subvo;
+	List<CifInfoCrtInArryVO> sub_arryvo;
 
 }

@@ -56,7 +56,7 @@ public class CifCtdtMangModule extends AppCommonModule {
 		return aca1100ArryVo;
 	}
 	
-	public String getCifCtdMaxNo( String cif, String ctdt_dcd )
+	public Long getCifCtdMaxNo( String cif, String ctdt_dcd )
 	{
 		Map<String, Object> insMap = new MetaHashMap();
 		insMap.put( "cif", cif);
@@ -72,18 +72,12 @@ public class CifCtdtMangModule extends AppCommonModule {
 		dbio.insert( "mapper.ac.aca1100mapper.insertaca1100one", insMap );
 	}
 	
-	public boolean procCifCtdChg( Aca1100Table aca1100Vo )
+	public boolean procCifCtdDelete( String cif, String ctdt_dcd )
 	{
-		Map<String, Object> insMap = new MetaHashMap(); 
-		insMap = MapperUtil.toMap(aca1100Vo);
-		int rv = dbio.update( "mapper.ac.aca1100mapper.updateaca1100one", insMap );
-		
-		if ( rv != 1 ) {
-			Logger log = ContextStoreHelper.getLog();
-			log.error( "변경 처리중 오류 발생 {0}", rv );
-			//MYER0005={0} 처리중 오류가 발생했습니다.
-			throw makeException( "MYER0005", "고객연락처 변경" );
-		}
+		Map<String, Object> insMap = new MetaHashMap();
+		insMap.put( "cif", cif);
+		insMap.put( "ctdt_dcd", ctdt_dcd);
+		dbio.update( "mapper.ac.aca1100mapper.updateaca1100one", insMap );
 		return true;
 	}
 

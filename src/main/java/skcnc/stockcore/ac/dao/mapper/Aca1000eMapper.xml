@@ -45,7 +45,7 @@ SELECT
  WHERE A.cif = #{cif}
 ]]>
     </select>
-    <select id="selectaca1000maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+    <select id="selectaca1000maxone" parameterType="String" resultType="String">
 <![CDATA[
 SELECT  LPAD(
              CAST(
@@ -148,8 +148,7 @@ UPDATE  ACA1000
      ,  cs_nd_eng_nm         = #{cs_nd_eng_nm}            /*고객종료영문명*/
      ,  rlnm_cnf_no_dcd      = #{rlnm_cnf_no_dcd}         /*실명확인번호구분코드*/
      ,  enc_rlnm_no          = #{enc_rlnm_no}             /*암호화실명번호*/
-     ,  rlnm_cnf_yn          = #{rlnm_cnf_yn}             /*실명확인여부*/
-     ,  rlnm_cnf_dt          = #{rlnm_cnf_dt}             /*실명확인일자*/
+
      ,  birh_dt              = #{birh_dt}                 /*생일일자*/
      ,  cs_typ_dcd           = #{cs_typ_dcd}              /*고객유형구분코드*/
      ,  nat_frgn_dcd         = #{nat_frgn_dcd}            /*내국인외국인구분코드*/
@@ -162,7 +161,7 @@ UPDATE  ACA1000
      ,  inco_dcd             = #{inco_dcd}                /*소득구분코드*/
      ,  oval_tati_typ_dcd    = #{oval_tati_typ_dcd}       /*종합과세유형구분코드*/
      ,  kor_stex_invt_dec    = #{kor_stex_invt_dec}       /*한국거래소투자자구분코드*/
-     ,  cs_rgs_dt            = #{cs_rgs_dt}               /*고객등록일자*/
+
      ,  cs_grd_cd            = #{cs_grd_cd}               /*고객등급코드*/
      ,  crdt_por_dcd         = #{crdt_por_dcd}            /*신용불량구분코드*/
      ,  acid_regi_yn         = #{acid_regi_yn}            /*사고등록여부*/

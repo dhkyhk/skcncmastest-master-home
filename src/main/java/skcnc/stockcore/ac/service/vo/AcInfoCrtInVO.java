@@ -73,5 +73,5 @@ public class AcInfoCrtInVO {
 	private String cif;
 	
 	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "통보처정보")
-	List<AcInfoCrtInArryVO> subvo;
+	List<AcInfoCrtInArryVO> sub_arryvo;
 }

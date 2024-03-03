@@ -114,7 +114,6 @@ UPDATE  ACB1000
    SET  
         prd_typ_dcd      = #{prd_typ_dcd}
      ,  ac_stat_dcd      = #{ac_stat_dcd}
-     ,  ac_opn_dt        = #{ac_opn_dt}
      ,  ac_mang_dept_no  = #{ac_mang_dept_no}
      ,  ac_mang_emp_no   = #{ac_mang_emp_no}
      ,  ac_prft_dept_no  = #{ac_prft_dept_no}

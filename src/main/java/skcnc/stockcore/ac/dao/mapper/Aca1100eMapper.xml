@@ -56,7 +56,7 @@ SELECT
  ORDER  BY cif, ctdt_dcd
 ]]>
     </select>
-    <select id="selectaca1100maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+    <select id="selectaca1100maxone" parameterType="String" resultType="Long">
 <![CDATA[
 SELECT  COALESCE(MAX(REGI_SNO),0) + 1 AS MAX_NO
   FROM  aca1100

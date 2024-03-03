@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ import skcnc.stockcore.ca.service.vo.LogoutOutVO;
 import skcnc.stockcore.ca.service.vo.PrcsNotfInVO;
 import skcnc.stockcore.ca.service.vo.PrcsNotfOutVO;
 
-//@Api(tags = "로그인관리" )
+@Api(tags = "업무공통 Controller" )
 @RestController
 @RequestMapping("ca")
 public class CaController extends AppCommonController{
@@ -52,28 +53,28 @@ public class CaController extends AppCommonController{
 	NotfMangService notfMangService;
 	
 	@Operation(summary = "직원조회", description = "직원정보 조회(CAA1000)")
-	@PostMapping("/inqry")
+	@PostMapping("/emp_inqry")
 	public AppResponse<EmpInqryOutVO> getEmpInfo(@RequestBody AppRequest<EmpInqryInVO> inData) 
 	{
 		return empInqry.getEmpInfo(inData);
 	}
 	
 	@Operation(summary = "직원등록", description = "직원정보 등록(CAA1000)")
-	@PostMapping("/regi")
+	@PostMapping("/emp_regi")
 	public AppResponse<EmpRegiOutVO> procEmpRegi(@RequestBody AppRequest<EmpRegiInVO> inData)
 	{
 		return empRegi.procEmpRegi(inData);
 	}
 	
 	@Operation(summary = "당일등록", description = "당일기본 일자 생성(CAD1100)")
-	@PostMapping("/dtcrt")
+	@PostMapping("/dt_crt")
 	public AppResponse<DtCrtOutVO> dtCrt(@RequestBody AppRequest<DtCrtInVO> inData)
 	{
 		return dtMangService.dtCrt(inData);
 	}
 	
 	@Operation(summary = "로그인처리", description = "로그인 처리 JWT 토큰 생성 X-AUTH-TOKEN 값을 쿠키에도 저장\n AC1001U1")
-	@PostMapping("/auth/login")
+	@PostMapping("/auth/emp_login")
 	public AppResponse<LoginOutVO> procLogin(@RequestBody AppRequest<LoginInVO> inData, HttpServletResponse response)
 	{
 		AppResponse<LoginOutVO> out = loginMangService.procLogin(inData);
@@ -89,7 +90,7 @@ public class CaController extends AppCommonController{
 	}
 	
 	@Operation(summary = "로그아웃처리", description = "로그아웃 처리 JWT 토큰이 저장된 쿠키 삭제")
-	@PostMapping("/auth/logout")
+	@PostMapping("/auth/emp_logout")
 	public AppResponse<LogoutOutVO> procLogout(@RequestBody AppRequest<LogoutInVO> inData, HttpServletResponse response)
 	{
 		LogoutOutVO outVo = LogoutOutVO.builder().emp_no( inData.getBody().getEmp_no() ).build();
@@ -106,7 +107,7 @@ public class CaController extends AppCommonController{
 	}
 
 	@Operation(summary = "카카오로 메시지 전송", description = "카카오로 메시지 전송")
-	@PostMapping("/kakaosend")
+	@PostMapping("/kakao_send")
 	public AppResponse<PrcsNotfOutVO> prcsNotf(@RequestBody AppRequest<PrcsNotfInVO> inData)
 	{
 		return notfMangService.prcsNotf(inData);

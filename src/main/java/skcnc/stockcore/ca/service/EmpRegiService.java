@@ -84,6 +84,8 @@ public class EmpRegiService extends AppCommonService {
 			EmpRegiOutVO outVo = new EmpRegiOutVO();
 			outVo.setEmp_no(inData.getBody().getEmp_no());
 			
+			String msgTxt;
+			
 			if ( "I".equals(inData.getBody().getWrk_dcd()) ) 
 			{
 				Caa1000Table caa100Vo = new Caa1000Table(); 
@@ -104,6 +106,7 @@ public class EmpRegiService extends AppCommonService {
 				outVo.setEmp_no(emp_no);
 				
 				empinfoMang.procEmpInfoRegi( caa100Vo );
+				msgTxt = "직원정보 등록이";
 			}
 			else if ( "U".equals(inData.getBody().getWrk_dcd()) ) 
 			{
@@ -143,6 +146,8 @@ public class EmpRegiService extends AppCommonService {
 				BeanUtils.copyProperties(inData.getBody(), caa100Vo);
 				
 				empinfoMang.procEmpInfoChg( caa100Vo );
+				
+				msgTxt = "직원정보 변경이";
 			} 
 			else 
 			{
@@ -151,20 +156,18 @@ public class EmpRegiService extends AppCommonService {
 				throw makeException("MYER0003", "작업구분");
 			}
 			
-			
-			Caa1000Table caa100 = empinfoMang.getEmpInfoInqry( inData.getBody().getEmp_no() );
-			
+			/*Caa1000Table caa100 = empinfoMang.getEmpInfoInqry( outVo.getEmp_no() );
 			if ( caa100 == null || StringUtils.isEmpty(caa100.getEmp_no()) ) {
 				log.error( "해당 직원정보가 존재하지 않습니다. : {}", inData );
 				//MYER0041={0}가 존재하지 않습니다.
 				throw makeException("MYER0041", "직원정보");
-			}
+			}*/
 			
 			outVo.setNorl_prcs_yn("Y");
 			log.error( "처리완료 되었습니다. : {}", outVo );
 			
 			//MYOK1001={0} 정상 처리 되었습니다 
-			return makeResponse(inData, outVo, "MYOK1001", "직원정보" );
+			return makeResponse(inData, outVo, "MYOK1001", msgTxt );
 		} catch ( AppCommonException e ) {
 			throw e;
 		} catch ( Exception e ) {

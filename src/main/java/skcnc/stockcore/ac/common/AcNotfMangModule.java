@@ -26,7 +26,7 @@ public class AcNotfMangModule extends AppCommonModule {
 		
 		if ( acb1100 == null ) {
 			//MYER0041={0}가 존재하지 않습니다.
-			throw makeException( "MYER0041", "계좌 통보처 정보" );
+			throw null;
 		}
 		
 		Acb1100Table acb1100Vo = MapperUtil.convert(acb1100, Acb1100Table.class);
