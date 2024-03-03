@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.aca1100mapper">
+    <select id="selectaca1100one" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        cif
+     ,  ctdt_dcd
+     ,  regi_sno
+     ,  post_no_sys_dcd
+     ,  post_no
+     ,  post_no_adr
+     ,  enc_post_no_ptcl_adr
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  mail
+     ,  use_yn
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  ACA1100 A
+ WHERE  A.cif      = #{cif}
+   AND  A.ctdt_dcd = #{ctdt_dcd}
+   AND  A.use_yn   = 'Y' 
+]]>
+    </select>
+    <select id="selectaca1100arry" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        cif
+     ,  ctdt_dcd
+     ,  regi_sno
+     ,  post_no_sys_dcd
+     ,  post_no
+     ,  post_no_adr
+     ,  enc_post_no_ptcl_adr
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  mail
+     ,  use_yn
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  ACA1100 A
+ WHERE  A.cif      = #{cif}
+   AND  (   #{ctdt_dcd} IS NULL
+        OR  A.ctdt_dcd = #{ctdt_dcd}
+   AND  A.use_yn = 'Y'
+ ORDER  BY cif, ctdt_dcd
+]]>
+    </select>
+    <select id="selectaca1100maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  COALESCE(MAX(REGI_SNO),0) + 1 AS MAX_NO
+  FROM  aca1100
+ WHERE  A.cif      = #{cif}
+   AND  A.ctdt_dcd = #{ctdt_dcd}
+   AND  A.use_yn = 'Y'
+]]>
+	</select>
+    <insert id="insertaca1100one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO ACA1100
+(  
+   cif
+,  ctdt_dcd
+,  regi_sno
+,  post_no_sys_dcd
+,  post_no
+,  post_no_adr
+,  enc_post_no_ptcl_adr
+,  tel_area_no
+,  tel_ptcl_area_no
+,  enc_tel_nd_no
+,  mail
+,  use_yn
+
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{cif}                        /*고객식별번호*/
+,  #{ctdt_dcd}
+,  #{regi_sno}
+,  #{post_no_sys_dcd}
+,  #{post_no}
+,  #{post_no_adr}
+,  #{enc_post_no_ptcl_adr}
+,  #{tel_area_no}
+,  #{tel_ptcl_area_no}
+,  #{enc_tel_nd_no}
+,  #{mail}
+,  'Y'
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updateaca1100one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  ACA1100
+   SET  
+        use_yn       = 'N'
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE  A.cif      = #{cif}
+   AND  A.ctdt_dcd = #{ctdt_dcd}
+   AND  A.use_yn   = 'Y'
+]]>
+	</update>
+</mapper>

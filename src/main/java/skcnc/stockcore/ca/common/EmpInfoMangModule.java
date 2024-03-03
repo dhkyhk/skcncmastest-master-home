@@ -65,6 +65,4 @@ public class EmpInfoMangModule extends AppCommonModule
 			return true;
 		return false;
 	}
-	
-
 }

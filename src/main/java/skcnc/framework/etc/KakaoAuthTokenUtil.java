@@ -1,6 +1,7 @@
 package skcnc.framework.etc;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpEntity;
@@ -16,7 +17,9 @@ import skcnc.framework.common.ContextStoreHelper;
 @Component
 public class KakaoAuthTokenUtil {
 	private static final String AUTH_URL = "https://kauth.kakao.com/oauth/token";
-	public static String authToken = null;
+	
+	@Value("${kako.restapi}")
+	public static String authToken;
 
 	public boolean getKakaoAuthToken(String code)  {
 		

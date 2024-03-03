@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.aca1000mapper">
+    <select id="selectaca1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        cif
+     ,  cs_nm
+     ,  cs_strt_eng_nm
+     ,  cs_nd_eng_nm
+     ,  rlnm_cnf_no_dcd
+     ,  enc_rlnm_no
+     ,  rlnm_cnf_yn
+     ,  rlnm_cnf_dt
+     ,  birh_dt
+     ,  cs_typ_dcd
+     ,  nat_frgn_dcd
+     ,  sex_dcd
+     ,  cust_id
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  mang_dept_no
+     ,  inco_dcd
+     ,  oval_tati_typ_dcd
+     ,  kor_stex_invt_dec
+     ,  cs_rgs_dt
+     ,  cs_grd_cd
+     ,  crdt_por_dcd
+     ,  acid_regi_yn
+     ,  nana_nati_dcd
+     ,  resd_nati_dcd
+     ,  prio_tel_ctdt_dcd
+     ,  prio_post_ctdt_dcd
+     ,  sms_dnwa_dcd
+     ,  emal_dnwa_dcd
+     ,  job_dcd
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM ACA1100 A
+ WHERE A.cif = #{cif}
+]]>
+    </select>
+    <select id="selectaca1000maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  LPAD(
+             CAST(
+                  CAST( 
+                       COALESCE( MAX(CIF),'0') AS INTEGER) + 1 
+                  AS TEXT
+             ), 10, '0' ) AS MAX_NO
+  FROM  aca1000
+ WHERE  char_length(CIF) = 10
+]]>
+	</select>
+    <insert id="insertaca1000one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO ACA1000
+(  
+   cif
+,  cs_nm
+,  cs_strt_eng_nm
+,  cs_nd_eng_nm
+,  rlnm_cnf_no_dcd
+,  enc_rlnm_no
+,  rlnm_cnf_yn
+,  rlnm_cnf_dt
+,  birh_dt
+,  cs_typ_dcd
+,  nat_frgn_dcd
+,  sex_dcd
+,  cust_id
+,  enc_pwd
+,  pwd_regi_dt
+,  pwd_err_cnt
+,  mang_dept_no
+,  inco_dcd
+,  oval_tati_typ_dcd
+,  kor_stex_invt_dec
+,  cs_rgs_dt
+,  cs_grd_cd
+,  crdt_por_dcd
+,  acid_regi_yn
+,  nana_nati_dcd
+,  resd_nati_dcd
+,  prio_tel_ctdt_dcd
+,  prio_post_ctdt_dcd
+,  sms_dnwa_dcd
+,  emal_dnwa_dcd
+,  job_dcd
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{cif}                        /*고객식별번호*/
+,  #{cs_nm}                      /*고객명*/
+,  #{cs_strt_eng_nm}             /*고객시작영문명 */
+,  #{cs_nd_eng_nm}               /*고객종료영문명*/
+,  #{rlnm_cnf_no_dcd}            /*실명확인번호구분코드*/
+,  #{enc_rlnm_no}                /*암호화실명번호*/
+,  'Y'                           /*실명확인여부 */
+,  to_char(NOW(), 'yyyymmdd')    /*실명확인일자*/
+,  #{birh_dt}                    /*생일일자 */
+,  #{cs_typ_dcd}                 /*고객유형구분코드 */
+,  #{nat_frgn_dcd}               /*내국인외국인구분코드*/
+,  #{sex_dcd}                    /*성별구분코드*/
+,  #{cust_id}                    /*고객ID */
+,  #{enc_pwd}                    /*암호화비밀번호*/
+,  to_char(NOW(), 'yyyymmdd')    /*비밀번호등록일자*/
+,  0                             /*비밀번호오류횟수*/
+,  #{mang_dept_no}               /*관리부서번호*/
+,  #{inco_dcd}                   /*소득구분코드*/
+,  #{oval_tati_typ_dcd}          /*종합과세유형구분코드*/
+,  #{kor_stex_invt_dec}          /*한국거래소투자자구분코드 */
+,  to_char(NOW(), 'yyyymmdd')    /*고객등록일자*/
+,  #{cs_grd_cd}                  /*고객등급코드*/
+,  #{crdt_por_dcd}               /*신용불량구분코드 */
+,  'N'                           /*사고등록여부*/
+,  #{nana_nati_dcd}              /*국적국가구분코드*/
+,  #{resd_nati_dcd}              /*거주국가구분코드*/
+,  #{prio_tel_ctdt_dcd}          /*우선전화연락처구분코드*/
+,  #{prio_post_ctdt_dcd}         /*우선우편연락처구분코드*/
+,  #{sms_dnwa_dcd}               /*SMS불원구분코드 */
+,  #{emal_dnwa_dcd}              /*이메일불원구분코드 */
+,  #{job_dcd}                    /*직업구분코드*/
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updateaca1000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  ACA1000
+   SET  
+        cs_nm                = #{cs_nm}                   /*고객명*/
+     ,  cs_strt_eng_nm       = #{cs_strt_eng_nm}          /*고객시작영문명*/
+     ,  cs_nd_eng_nm         = #{cs_nd_eng_nm}            /*고객종료영문명*/
+     ,  rlnm_cnf_no_dcd      = #{rlnm_cnf_no_dcd}         /*실명확인번호구분코드*/
+     ,  enc_rlnm_no          = #{enc_rlnm_no}             /*암호화실명번호*/
+     ,  rlnm_cnf_yn          = #{rlnm_cnf_yn}             /*실명확인여부*/
+     ,  rlnm_cnf_dt          = #{rlnm_cnf_dt}             /*실명확인일자*/
+     ,  birh_dt              = #{birh_dt}                 /*생일일자*/
+     ,  cs_typ_dcd           = #{cs_typ_dcd}              /*고객유형구분코드*/
+     ,  nat_frgn_dcd         = #{nat_frgn_dcd}            /*내국인외국인구분코드*/
+     ,  sex_dcd              = #{sex_dcd}                 /*성별구분코드*/
+     ,  cust_id              = #{cust_id}                 /*고객ID */
+     ,  enc_pwd              = #{enc_pwd}                 /*암호화비밀번호*/
+     ,  pwd_regi_dt          = #{pwd_regi_dt}             /*비밀번호등록일자*/
+     ,  pwd_err_cnt          = #{pwd_err_cnt}             /*비밀번호오류횟수*/
+     ,  mang_dept_no         = #{mang_dept_no}            /*관리부서번호*/
+     ,  inco_dcd             = #{inco_dcd}                /*소득구분코드*/
+     ,  oval_tati_typ_dcd    = #{oval_tati_typ_dcd}       /*종합과세유형구분코드*/
+     ,  kor_stex_invt_dec    = #{kor_stex_invt_dec}       /*한국거래소투자자구분코드*/
+     ,  cs_rgs_dt            = #{cs_rgs_dt}               /*고객등록일자*/
+     ,  cs_grd_cd            = #{cs_grd_cd}               /*고객등급코드*/
+     ,  crdt_por_dcd         = #{crdt_por_dcd}            /*신용불량구분코드*/
+     ,  acid_regi_yn         = #{acid_regi_yn}            /*사고등록여부*/
+     ,  nana_nati_dcd        = #{nana_nati_dcd}           /*국적국가구분코드*/
+     ,  resd_nati_dcd        = #{resd_nati_dcd}           /*거주국가구분코드*/
+     ,  prio_tel_ctdt_dcd    = #{prio_tel_ctdt_dcd}       /*우선전화연락처구분코드*/
+     ,  prio_post_ctdt_dcd   = #{prio_post_ctdt_dcd}      /*우선우편연락처구분코드*/
+     ,  sms_dnwa_dcd         = #{sms_dnwa_dcd}            /*SMS불원구분코드 */
+     ,  emal_dnwa_dcd        = #{emal_dnwa_dcd}           /*이메일불원구분코드 */
+     ,  job_dcd              = #{job_dcd}                 /*직업구분코드*/
+
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE A.cif = #{cif}
+]]>
+	</update>
+</mapper>

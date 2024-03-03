@@ -17,6 +17,7 @@ public class DtMangModule extends AppCommonModule {
 	
 	/**
 	 * 작업일자 구분에 맞게 일자 설정
+	 * 작업일자구분코드(01:영업일	02:거래일	03:개장일	04:작업기준일	05:결제일)
 	 * @param wrk_dt_dcd
 	 */
 	public void setDt( String wrk_dt_dcd )
@@ -29,6 +30,7 @@ public class DtMangModule extends AppCommonModule {
 			
 			for( int i=0; i< 10; i++ ) {
 				weekIdx = DateUtil.getWeekday(basedt);
+				//04:작업 기준일만 공휴일 없이 처리하고 그외에는 공휴일 체크하자.. -
 				if ( ( weekIdx == 0 || weekIdx == 6 ) && !("04").equals(wrk_dt_dcd) ) {
 					basedt = DateUtil.addDay(basedt, -1);
 					continue;

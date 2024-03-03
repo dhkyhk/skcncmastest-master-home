@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.acb1100mapper">
+    <select id="selectacb1100one" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  notf_wrk_dcd
+     ,  notf_ctdt_dcd
+     ,  use_yn
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id     
+  FROM  ACB1100 A
+ WHERE  A.ac_no        = #{ac_no}
+   AND  A.notf_wrk_dcd = #{notf_wrk_dcd}  
+]]>
+    </select>
+    <select id="selectacb1100arry" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  notf_wrk_dcd
+     ,  notf_ctdt_dcd
+     ,  use_yn
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id     
+  FROM  ACB1100 A
+ WHERE  A.ac_no        = #{ac_no}
+ ORDER  BY A.notf_wrk_dcd  
+]]>
+    </select>
+    <insert id="insertacb1100one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO ACB1100
+(  
+   ac_no
+,  notf_wrk_dcd
+,  notf_ctdt_dcd
+,  use_yn
+
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{ac_no}
+,  #{notf_wrk_dcd}
+,  #{notf_ctdt_dcd}
+,  'Y'
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updateacb1100one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  ACB1100
+   SET  
+        notf_ctdt_dcd = #{notf_ctdt_dcd}
+     ,  use_yn        = #{use_yn}
+        
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE  A.ac_no        = #{ac_no}
+   AND  A.notf_wrk_dcd = #{notf_wrk_dcd}
+]]>
+	</update>
+</mapper>

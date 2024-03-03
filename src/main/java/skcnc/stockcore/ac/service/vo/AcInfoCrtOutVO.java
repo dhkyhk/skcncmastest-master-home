@@ -1,4 +1,4 @@
-package skcnc.stockcore.ca.service.vo;
+package skcnc.stockcore.ac.service.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -12,11 +12,10 @@ import lombok.ToString;
 @Builder
 @Data
 @ToString
-public class EmpRegiOutVO {
-	
-	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "사원번호", example = "08963")
-	private String emp_no;
-	
+public class AcInfoCrtOutVO {
+	@Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "계좌번호(11자리)", example = "10000000001")
+	private String ac_no;
+
 	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "정상처리여부", example = "Y")
-	private String norl_prcs_yn;
+    private String norl_prcs_yn;
 }

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.acb1000mapper">
+    <select id="selectacb1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  prd_typ_dcd
+     ,  ac_stat_dcd
+     ,  ac_opn_dt
+     ,  ac_mang_dept_no
+     ,  ac_mang_emp_no
+     ,  ac_prft_dept_no
+     ,  ac_opn_dept_no
+     ,  bill_tati_yn
+     ,  trtx_tati_yn
+     ,  dvtx_tati_yn
+     ,  cma_ac_yn
+     ,  sly_ac_yn
+     ,  ac_nknm_nm
+     ,  trd_prp_dcd
+     ,  mny_sur_dcd
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  cif
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id     
+  FROM  ACB1000 A
+ WHERE  A.ac_no = #{ac_no}
+]]>
+    </select>
+    <select id="selectacb1000maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  LPAD(
+             CAST(
+                  CAST( 
+                       COALESCE( MAX(ac_no),'0') AS INTEGER) + 1 
+                  AS TEXT
+             ), 11, '0' ) AS MAX_NO
+  FROM  ACB1000
+ WHERE  char_length(ac_no) = 11
+]]>
+	</select>
+    <insert id="insertacb1000one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO ACB1000
+(  
+   ac_no
+,  prd_typ_dcd
+,  ac_stat_dcd
+,  ac_opn_dt
+,  ac_mang_dept_no
+,  ac_mang_emp_no
+,  ac_prft_dept_no
+,  ac_opn_dept_no
+,  bill_tati_yn
+,  trtx_tati_yn
+,  dvtx_tati_yn
+,  cma_ac_yn
+,  sly_ac_yn
+,  ac_nknm_nm
+,  trd_prp_dcd
+,  mny_sur_dcd
+,  enc_pwd
+,  pwd_regi_dt
+,  pwd_err_cnt
+,  cif
+
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{ac_no}
+,  #{prd_typ_dcd}
+,  '01'
+,  to_char(NOW(), 'yyyymmdd')
+,  #{ac_mang_dept_no}
+,  #{ac_mang_emp_no}
+,  #{ac_prft_dept_no}
+,  #{ac_opn_dept_no}
+,  #{bill_tati_yn}
+,  #{trtx_tati_yn}
+,  #{dvtx_tati_yn}
+,  #{cma_ac_yn}
+,  #{sly_ac_yn}
+,  #{ac_nknm_nm}
+,  #{trd_prp_dcd}
+,  #{mny_sur_dcd}
+,  #{enc_pwd}
+,  to_char(NOW(), 'yyyymmdd')
+,  0
+,  #{cif}
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updateacb1000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  ACB1000
+   SET  
+        prd_typ_dcd      = #{prd_typ_dcd}
+     ,  ac_stat_dcd      = #{ac_stat_dcd}
+     ,  ac_opn_dt        = #{ac_opn_dt}
+     ,  ac_mang_dept_no  = #{ac_mang_dept_no}
+     ,  ac_mang_emp_no   = #{ac_mang_emp_no}
+     ,  ac_prft_dept_no  = #{ac_prft_dept_no}
+     ,  ac_opn_dept_no   = #{ac_opn_dept_no}
+     ,  bill_tati_yn     = #{bill_tati_yn}
+     ,  trtx_tati_yn     = #{trtx_tati_yn}
+     ,  dvtx_tati_yn     = #{dvtx_tati_yn}
+     ,  cma_ac_yn        = #{cma_ac_yn}
+     ,  sly_ac_yn        = #{sly_ac_yn}
+     ,  ac_nknm_nm       = #{ac_nknm_nm}
+     ,  trd_prp_dcd      = #{trd_prp_dcd}
+     ,  mny_sur_dcd      = #{mny_sur_dcd}
+     ,  enc_pwd          = #{enc_pwd}
+     ,  pwd_regi_dt      = #{pwd_regi_dt}
+     ,  pwd_err_cnt      = #{pwd_err_cnt}
+     ,  cif              = #{cif}
+        
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE  A.ac_no = #{ac_no}
+]]>
+	</update>
+</mapper>
