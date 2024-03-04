@@ -53,7 +53,7 @@ SELECT  LPAD(
                        COALESCE( MAX(CIF),'0') AS INTEGER) + 1 
                   AS TEXT
              ), 10, '0' ) AS MAX_NO
-  FROM  aca1000
+  FROM  aca1000 A
  WHERE  char_length(CIF) = 10
 ]]>
 	</select>
@@ -141,7 +141,7 @@ VALUES
     </insert>
     <update id="updateaca1000one" parameterType="skcnc.framework.database.MetaHashMap">
 <![CDATA[
-UPDATE  ACA1000
+UPDATE  ACA1000 A
    SET  
         cs_nm                = #{cs_nm}                   /*고객명*/
      ,  cs_strt_eng_nm       = #{cs_strt_eng_nm}          /*고객시작영문명*/

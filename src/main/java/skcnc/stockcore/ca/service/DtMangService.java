@@ -37,7 +37,7 @@ public class DtMangService extends AppCommonService {
 				dtMang.setDt( "05" );
 				
 				prs_dt = dtMang.getBsnDt( "01" );
-			} else if ( inData.getBody().getWrk_dt_dcd().contains("01|02|03|04|05") ) {
+			} else if ( "01|02|03|04|05".contains(inData.getBody().getWrk_dt_dcd()) ) {
 				dtMang.setDt( inData.getBody().getWrk_dt_dcd() );
 				
 				prs_dt = dtMang.getBsnDt( inData.getBody().getWrk_dt_dcd() );

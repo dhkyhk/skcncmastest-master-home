@@ -59,7 +59,7 @@ SELECT
     <select id="selectaca1100maxone" parameterType="String" resultType="Long">
 <![CDATA[
 SELECT  COALESCE(MAX(REGI_SNO),0) + 1 AS MAX_NO
-  FROM  aca1100
+  FROM  aca1100 A
  WHERE  A.cif      = #{cif}
    AND  A.ctdt_dcd = #{ctdt_dcd}
    AND  A.use_yn = 'Y'
@@ -112,7 +112,7 @@ VALUES
     </insert>
     <update id="updateaca1100one" parameterType="skcnc.framework.database.MetaHashMap">
 <![CDATA[
-UPDATE  ACA1100
+UPDATE  ACA1100 A
    SET  
         use_yn       = 'N'
      ,  opr_dttm     = NOW()

@@ -69,7 +69,7 @@ public class AcInfoCrtInVO {
 	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "암호화비밀번호", example = "1111")
 	private String enc_pwd;
 
-	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "고객식별번호(10자리)", example = "1000000001")
+	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "고객식별번호(10자리)", example = "0000000001")
 	private String cif;
 	
 	@Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "통보처정보")

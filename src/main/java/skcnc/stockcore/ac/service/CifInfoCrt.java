@@ -183,7 +183,7 @@ public class CifInfoCrt extends AppCommonService
 					}
 					
 					//01:집주소,02:집전화,03:회사주소,04:회사전화,05:FAX,06:휴대폰,07:eami
-					if( subvo.getCtdt_dcd().contains( "01|03" ) ) {
+					if( "01|03".contains( subvo.getCtdt_dcd() ) ) {
 						if ( StringUtils.isEmpty(subvo.getPost_no_sys_dcd()) ) {
 							log.error( "입력값을 확인하세요 : {}", subvo );
 							//MYER0003=입력값 {0}를 확인하세요.
@@ -213,7 +213,7 @@ public class CifInfoCrt extends AppCommonService
 						subvo.setEnc_tel_nd_no( "" );
 						subvo.setMail( "" );
 					}
-					else if( subvo.getCtdt_dcd().contains( "02|04|05|06" ) ) {
+					else if( "02|04|05|06".contains( subvo.getCtdt_dcd() ) ) {
 						
 						if ( StringUtils.isEmpty(subvo.getTel_area_no()) ) {
 							log.error( "입력값을 확인하세요 : {}", subvo );
@@ -239,7 +239,7 @@ public class CifInfoCrt extends AppCommonService
 						subvo.setEnc_post_no_ptcl_adr( "" );
 						subvo.setMail( "" );
 					}
-					else if( subvo.getCtdt_dcd().contains( "07" ) ) {
+					else if( "07".equals(subvo.getCtdt_dcd()) ) {
 						if ( StringUtils.isEmpty(subvo.getMail()) ) {
 							log.error( "입력값을 확인하세요 : {}", subvo );
 							//MYER0003=입력값 {0}를 확인하세요.

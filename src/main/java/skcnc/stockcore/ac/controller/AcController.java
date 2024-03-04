@@ -2,6 +2,7 @@ package skcnc.stockcore.ac.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,14 +31,14 @@ public class AcController extends AppCommonController{
 	
 	@Operation(summary = "고객등록", description = "고객정보등록(ACA1000)")
 	@PostMapping("/cif_regi")
-	public AppResponse<CifInfoCrtOutVO> procCifRegi(AppRequest<CifInfoCrtInVO> inData)
+	public AppResponse<CifInfoCrtOutVO> procCifRegi(@RequestBody AppRequest<CifInfoCrtInVO> inData)
 	{
 		return cifInfoCrt.procCifRegi(inData);
 	}
 	
 	@Operation(summary = "계좌개설", description = "계좌개설(ACB1000)")
 	@PostMapping("/acno_regi")
-	public AppResponse<AcInfoCrtOutVO> procAcRegi(AppRequest<AcInfoCrtInVO> inData)
+	public AppResponse<AcInfoCrtOutVO> procAcRegi(@RequestBody AppRequest<AcInfoCrtInVO> inData)
 	{
 		return ccInfoCrt.procAcRegi(inData);
 	}

@@ -35,7 +35,7 @@ SELECT
  WHERE  A.ac_no = #{ac_no}
 ]]>
     </select>
-    <select id="selectacb1000maxone" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+    <select id="selectacb1000maxone" parameterType="String" resultType="String">
 <![CDATA[
 SELECT  LPAD(
              CAST(
@@ -43,7 +43,7 @@ SELECT  LPAD(
                        COALESCE( MAX(ac_no),'0') AS INTEGER) + 1 
                   AS TEXT
              ), 11, '0' ) AS MAX_NO
-  FROM  ACB1000
+  FROM  ACB1000 A
  WHERE  char_length(ac_no) = 11
 ]]>
 	</select>
@@ -110,7 +110,7 @@ VALUES
     </insert>
     <update id="updateacb1000one" parameterType="skcnc.framework.database.MetaHashMap">
 <![CDATA[
-UPDATE  ACB1000
+UPDATE  ACB1000 A
    SET  
         prd_typ_dcd      = #{prd_typ_dcd}
      ,  ac_stat_dcd      = #{ac_stat_dcd}

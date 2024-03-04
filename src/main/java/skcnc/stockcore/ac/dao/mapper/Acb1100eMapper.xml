@@ -68,7 +68,7 @@ VALUES
     </insert>
     <update id="updateacb1100one" parameterType="skcnc.framework.database.MetaHashMap">
 <![CDATA[
-UPDATE  ACB1100
+UPDATE  ACB1100 A
    SET  
         notf_ctdt_dcd = #{notf_ctdt_dcd}
      ,  use_yn        = #{use_yn}
