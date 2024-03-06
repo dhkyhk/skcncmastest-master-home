@@ -26,6 +26,20 @@
         </encoder>
     </appender>
 
+    <appender name="FILE_TIME" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DR}/webapp-inout-time.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 파일이 하루에 한개씩 생성된다 -->
+            <fileNamePattern>${LOG_DR}/%d{yyyy-MM-dd}/msa-webapp-inout-time.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- max History 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다.
+             위 설정데로 라면 30일이 지난 파일은 삭제가 된다.-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %msg %n</pattern>
+        </encoder>
+    </appender>
+
     <appender name="FILE_INOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DR}/webapp-inout.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -113,6 +127,10 @@
     <!-- IO 로그 분리 -->
     <logger name="FILE_INOUT" level="DEBUG" additivity="false">
         <appender-ref ref="FILE_INOUT"/>
+    </logger>
+
+    <logger name="INOUT_TIME" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE_TIME"/>
     </logger>
 
 </configuration>

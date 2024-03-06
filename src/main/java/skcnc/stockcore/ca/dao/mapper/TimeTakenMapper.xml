@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ca.timetakenmapper">
+    <select id="selectcad1100one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  
+        wrk_dt_dcd
+     ,  bef_4_dt
+     ,  bef_3_dt
+     ,  bef_2_dt
+     ,  bef_dt
+     ,  prs_dt
+     ,  aft_dt
+     ,  aft_2_dt
+     ,  aft_3_dt
+     ,  aft_4_dt
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAD1100 A
+ WHERE  A.wrk_dt_dcd = #{wrk_dt_dcd}
+]]>
+    </select>
+    <select id="selectcaa1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  emp_no
+     ,  hofe_dcd
+     ,  joco_dt
+     ,  retco_dt
+     ,  emp_nm
+     ,  mail
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  dept_no
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAA1000 A
+ WHERE  A.emp_no = #{emp_no}
+]]>
+    </select>
+    <select id="selectaca1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        cif
+     ,  cs_nm
+     ,  cs_strt_eng_nm
+     ,  cs_nd_eng_nm
+     ,  rlnm_cnf_no_dcd
+     ,  enc_rlnm_no
+     ,  rlnm_cnf_yn
+     ,  rlnm_cnf_dt
+     ,  birh_dt
+     ,  cs_typ_dcd
+     ,  nat_frgn_dcd
+     ,  sex_dcd
+     ,  cust_id
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  mang_dept_no
+     ,  inco_dcd
+     ,  oval_tati_typ_dcd
+     ,  kor_stex_invt_dec
+     ,  cs_rgs_dt
+     ,  cs_grd_cd
+     ,  crdt_por_dcd
+     ,  acid_regi_yn
+     ,  nana_nati_dcd
+     ,  resd_nati_dcd
+     ,  prio_tel_ctdt_dcd
+     ,  prio_post_ctdt_dcd
+     ,  sms_dnwa_dcd
+     ,  emal_dnwa_dcd
+     ,  job_dcd
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM ACA1000 A
+ WHERE A.cif = #{cif}
+]]>
+    </select>
+    <select id="selectaca1100one" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        cif
+     ,  ctdt_dcd
+     ,  regi_sno
+     ,  post_no_sys_dcd
+     ,  post_no
+     ,  post_no_adr
+     ,  enc_post_no_ptcl_adr
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  mail
+     ,  use_yn
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  ACA1100 A
+ WHERE  A.cif      = #{cif}
+   AND  A.ctdt_dcd = #{ctdt_dcd}
+   AND  A.use_yn   = 'Y' 
+]]>
+    </select>
+    <select id="selectacb1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  prd_typ_dcd
+     ,  ac_stat_dcd
+     ,  ac_opn_dt
+     ,  ac_mang_dept_no
+     ,  ac_mang_emp_no
+     ,  ac_prft_dept_no
+     ,  ac_opn_dept_no
+     ,  bill_tati_yn
+     ,  trtx_tati_yn
+     ,  dvtx_tati_yn
+     ,  cma_ac_yn
+     ,  sly_ac_yn
+     ,  ac_nknm_nm
+     ,  trd_prp_dcd
+     ,  mny_sur_dcd
+     ,  enc_pwd
+     ,  pwd_regi_dt
+     ,  pwd_err_cnt
+     ,  cif
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id     
+  FROM  ACB1000 A
+ WHERE  A.ac_no = #{ac_no}
+]]>
+    </select>
+    <select id="selectacb1100one" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  notf_wrk_dcd
+     ,  notf_ctdt_dcd
+     ,  use_yn
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id     
+  FROM  ACB1100 A
+ WHERE  A.ac_no        = #{ac_no}
+   AND  A.notf_wrk_dcd = #{notf_wrk_dcd}  
+]]>
+    </select>
+    <insert id="insertcad4000" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+INSERT 
+  INTO CAD4000
+(
+   dt
+,  regi_sno
+,  cif
+,  ac_no
+,  notf_ctdt_dcd
+,  post_no_sys_dcd
+,  post_no
+,  post_no_adr
+,  enc_post_no_ptcl_adr
+,  tel_area_no
+,  tel_ptcl_area_no
+,  enc_tel_nd_no
+,  mail
+,  notf_txt
+,  dey_yn
+,  sndb_yn
+
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   to_char(NOW(), 'yyyymmdd')
+,  (SELECT  COALESCE( MAX(regi_sno),0) + 1 
+      FROM  CAD4000 A
+     WHERE  dt = to_char(NOW(), 'yyyymmdd'))  
+,  #{cif}
+,  #{ac_no}
+,  #{notf_ctdt_dcd}
+,  #{post_no_sys_dcd}
+,  #{post_no}
+,  #{post_no_adr}
+,  #{enc_post_no_ptcl_adr}
+,  #{tel_area_no}
+,  #{tel_ptcl_area_no}
+,  #{enc_tel_nd_no}
+,  #{mail}
+,  #{notf_txt}
+,  'N'
+,  'N'
+
+,  COALESCE( #{opr_dttm}, NOW() )
+,  #{opr_id}
+,  #{opr_trd_id}
+,  #{opr_tmn_id}
+)
+]]>
+    </insert>
+</mapper>

@@ -41,7 +41,7 @@ SELECT
      ,  opr_id
      ,  opr_trd_id
      ,  opr_tmn_id
-  FROM ACA1100 A
+  FROM ACA1000 A
  WHERE A.cif = #{cif}
 ]]>
     </select>

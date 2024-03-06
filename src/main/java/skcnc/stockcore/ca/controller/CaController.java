@@ -19,6 +19,7 @@ import skcnc.stockcore.ca.service.EmpInqryService;
 import skcnc.stockcore.ca.service.EmpRegiService;
 import skcnc.stockcore.ca.service.LoginMangService;
 import skcnc.stockcore.ca.service.NotfMangService;
+import skcnc.stockcore.ca.service.TimeTaken;
 import skcnc.stockcore.ca.service.vo.DtCrtInVO;
 import skcnc.stockcore.ca.service.vo.DtCrtOutVO;
 import skcnc.stockcore.ca.service.vo.EmpInqryInVO;
@@ -31,6 +32,8 @@ import skcnc.stockcore.ca.service.vo.LogoutInVO;
 import skcnc.stockcore.ca.service.vo.LogoutOutVO;
 import skcnc.stockcore.ca.service.vo.PrcsNotfInVO;
 import skcnc.stockcore.ca.service.vo.PrcsNotfOutVO;
+import skcnc.stockcore.ca.service.vo.TimeTakenInVO;
+import skcnc.stockcore.ca.service.vo.TimeTakenOutVO;
 
 @Api(tags = "업무공통 Controller" )
 @RestController
@@ -51,6 +54,9 @@ public class CaController extends AppCommonController{
 
 	@Autowired
 	NotfMangService notfMangService;
+	
+	@Autowired
+	TimeTaken timeTaken;
 	
 	@Operation(summary = "직원조회", description = "직원정보 조회(CAA1000)")
 	@PostMapping("/emp_inqry")
@@ -111,5 +117,12 @@ public class CaController extends AppCommonController{
 	public AppResponse<PrcsNotfOutVO> prcsNotf(@RequestBody AppRequest<PrcsNotfInVO> inData)
 	{
 		return notfMangService.prcsNotf(inData);
+	}
+	
+	@Operation(summary = "Test 서비스", description = "성능 테스트용 테스트 서비스")
+	@PostMapping("/auth/timetaken")
+	public AppResponse<TimeTakenOutVO> prcsTrade(@RequestBody AppRequest<TimeTakenInVO> inData)
+	{
+		return timeTaken.prcsTrade(inData);
 	}
 }

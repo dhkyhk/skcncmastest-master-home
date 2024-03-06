@@ -87,4 +87,23 @@ public class AppCommonControllerAdvice {
         String msgCd = "MYER0008"; //잘못된 요청입니다.
         return AppResponse.create((AppHeader) null, AppHeader.RT_FAIL, msgCd, messageSource.getMessage(msgCd), null);
     }
+    
+    /*
+    @Around(value = "execution(* *.*Controller)")
+    public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
+    	
+    	Logger log = LoggerFactory.getLogger("INOUT_TIME");
+    	
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        
+        Object result = pjp.proceed();
+        
+        stopWatch.stop();
+        long elapsedTime = stopWatch.getTotalTimeMillis();
+        
+    	log.debug( "소요시간 : ", elapsedTime);
+       
+        return result;
+    }*/
 }
