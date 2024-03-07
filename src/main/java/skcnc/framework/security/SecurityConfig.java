@@ -20,8 +20,15 @@ import lombok.RequiredArgsConstructor;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-	private final String[] AUTH_WHITELIST = { "/ca/auth/**", "/ac/auth/**", "/rp/auth/**",
-			"/swagger-resources/**", "/swagger-ui/**", "/v3/api-docs/**", "/v3/api-docs" };
+	private final String[] AUTH_WHITELIST = { 
+			"/ca/auth/**"   //업무코드 뒤에 auth 는 업무별 권한 체크가 필요없는 업무 모음...
+			, "/ac/auth/**"
+			, "/rp/auth/**"
+			, "/test/**"    //테스트용
+			, "/swagger-resources/**"
+			, "/swagger-ui/**"
+			, "/v3/api-docs/**"
+			, "/v3/api-docs" };
 
 	private final JwtTokenProvider jwtTokenProvider;
 

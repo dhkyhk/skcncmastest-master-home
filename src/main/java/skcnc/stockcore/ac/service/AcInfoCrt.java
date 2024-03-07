@@ -1,5 +1,7 @@
 package skcnc.stockcore.ac.service;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import skcnc.framework.common.AppCommonException;
 import skcnc.framework.common.AppCommonService;
 import skcnc.framework.common.ContextStoreHelper;
+import skcnc.framework.database.MetaHashMap;
 import skcnc.framework.model.AppRequest;
 import skcnc.framework.model.AppResponse;
+import skcnc.framework.utils.MapperUtil;
 import skcnc.framework.utils.StringUtils;
 import skcnc.stockcore.ac.common.AcInfoMangModule;
 import skcnc.stockcore.ac.common.AcNotfMangModule;
@@ -172,6 +176,16 @@ public class AcInfoCrt extends AppCommonService {
 					}
 				}
 			}
+			
+			//출납 예수금 관련 테이블 생성.
+			Map<String, Object> insMap = new MetaHashMap(); 
+			insMap.put( "ac_no", inData.getBody().getAc_no() );
+			
+			//출납_거래일련번호 채번 생성
+			dbio.insert( "mapper.ac.rpd0100mapper.insertrpd0100one", insMap );
+			
+			//출납_계좌예수금잔고기본 생성
+			dbio.insert( "mapper.ac.rpa1000mapper.insertrpa1000one", insMap );
 			
 			outVo.setAc_no( inData.getBody().getAc_no() );
 			outVo.setNorl_prcs_yn( "Y" );

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.rpd0100mapper">
+    <select id="selectrpd0100one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  last_trd_dt
+     ,  last_trd_sno
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM RPD0100 A
+ WHERE A.ac_no = #{ac_no}
+]]>
+    </select>
+    <insert id="insertrpd0100one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO RPD0100
+(  
+   ac_no
+,  last_trd_dt
+,  last_trd_sno
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{ac_no}
+,  to_char(NOW(), 'yyyymmdd')
+,  0
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updaterpd0100one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  RPD0100 A
+   SET  
+        last_trd_dt  = #{last_trd_dt} 
+     ,  last_trd_sno = #{last_trd_sno}
+
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE A.ac_no = #{ac_no}
+]]>
+	</update>
+</mapper>

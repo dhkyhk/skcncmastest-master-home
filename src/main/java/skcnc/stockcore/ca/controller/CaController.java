@@ -52,12 +52,6 @@ public class CaController extends AppCommonController{
 	@Autowired
 	LoginMangService loginMangService;
 
-	@Autowired
-	NotfMangService notfMangService;
-	
-	@Autowired
-	TimeTaken timeTaken;
-	
 	@Operation(summary = "직원조회", description = "직원정보 조회(CAA1000)")
 	@PostMapping("/emp_inqry")
 	public AppResponse<EmpInqryOutVO> getEmpInfo(@RequestBody AppRequest<EmpInqryInVO> inData) 
@@ -110,19 +104,5 @@ public class CaController extends AppCommonController{
     	
 		//MYOK1001={0} 정상 처리 되었습니다 
 		return makeResponse(inData.getHead(), outVo, "MYOK1001", "로그아웃" );
-	}
-
-	@Operation(summary = "카카오로 메시지 전송", description = "카카오로 메시지 전송")
-	@PostMapping("/kakao_send")
-	public AppResponse<PrcsNotfOutVO> prcsNotf(@RequestBody AppRequest<PrcsNotfInVO> inData)
-	{
-		return notfMangService.prcsNotf(inData);
-	}
-	
-	@Operation(summary = "Test 서비스", description = "성능 테스트용 테스트 서비스")
-	@PostMapping("/auth/timetaken")
-	public AppResponse<TimeTakenOutVO> prcsTrade(@RequestBody AppRequest<TimeTakenInVO> inData)
-	{
-		return timeTaken.prcsTrade(inData);
 	}
 }

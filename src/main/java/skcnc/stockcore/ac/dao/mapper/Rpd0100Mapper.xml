@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ac.rpa1000mapper">
+    <select id="selectrpa1000one" parameterType="String" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT 
+        ac_no
+     ,  da
+     ,  subst_amt
+     ,  fuop_subst_amt
+     ,  lstl_amt
+     ,  lstl_eva_amt
+     ,  add_scry_amt
+     ,  sub_marga
+     ,  pchs_marga
+     ,  csh_marga
+     ,  pym_cnt
+     ,  tot_pym_amt
+     ,  clpr_eva_amt
+     ,  rcvb_bal_amt
+     ,  rcvb_ovdu_int_amt
+     ,  rcvb_sb_ensu_amt
+
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM RPA1000 A
+ WHERE A.ac_no = #{ac_no}
+]]>
+    </select>
+    <insert id="insertrpa1000one" parameterType="skcnc.framework.database.MetaHashMap" >
+<![CDATA[
+INSERT 
+  INTO RPA1000
+(  
+   ac_no
+,  da
+,  subst_amt
+,  fuop_subst_amt
+,  lstl_amt
+,  lstl_eva_amt
+,  add_scry_amt
+,  sub_marga
+,  pchs_marga
+,  csh_marga
+,  pym_cnt
+,  tot_pym_amt
+,  clpr_eva_amt
+,  rcvb_bal_amt
+,  rcvb_ovdu_int_amt
+,  rcvb_sb_ensu_amt
+
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   #{ac_no}
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+,  0
+
+,  NOW()                         /*조작일시*/
+,  #{opr_id}                     /*조작자ID*/
+,  #{opr_trd_id}                 /*조작거래ID*/
+,  #{opr_tmn_id}                 /*조작터미널ID*/
+)
+]]>
+    </insert>
+    <update id="updaterpa1000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+UPDATE  RPA1000 A
+   SET  
+        da                  = #{da}
+     ,  subst_amt           = #{subst_amt}
+     ,  fuop_subst_amt      = #{fuop_subst_amt}
+     ,  lstl_amt            = #{lstl_amt}
+     ,  lstl_eva_amt        = #{lstl_eva_amt}
+     ,  add_scry_amt        = #{add_scry_amt}
+     ,  sub_marga           = #{sub_marga}
+     ,  pchs_marga          = #{pchs_marga}
+     ,  csh_marga           = #{csh_marga}
+     ,  pym_cnt             = #{pym_cnt}
+     ,  tot_pym_amt         = #{tot_pym_amt}
+     ,  clpr_eva_amt        = #{clpr_eva_amt}
+     ,  rcvb_bal_amt        = #{rcvb_bal_amt}
+     ,  rcvb_ovdu_int_amt   = #{rcvb_ovdu_int_amt}
+     ,  rcvb_sb_ensu_amt    = #{rcvb_sb_ensu_amt}
+
+     ,  opr_dttm     = NOW()
+     ,  opr_id       = #{opr_id}
+     ,  opr_trd_id   = #{opr_trd_id}
+     ,  opr_tmn_id   = #{opr_tmn_id}
+ WHERE A.ac_no = #{ac_no}
+]]>
+	</update>
+</mapper>

@@ -71,6 +71,12 @@ stockcore:
     token: #인증 토큰 정보
       secret: ZmluYW5jZS1tc2EtYmFja2VuZC1qd3Qtc2VjcmV0LWZpbmFuY2UtbXNhLWJhY2tlbmQtand0LXNlY3JldC1maW5hbmNlLW1zYS1iYWNrZW5kLWp3dC1zZWNyZXQK
       valid-minute: 30 #30분
+  connectPool:
+    MaxTotal: 100
+    MaxPerRoute: 10
+  etcConnectPool:
+    MaxTotal: 10
+    MaxPerRoute: 10
 
 #developers.kakao.com  
 kako:
