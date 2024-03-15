@@ -1,28 +1,25 @@
-package skcnc.framework.database;
+package skcnc.framework.txmang;
 
 import java.util.List;
 
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
-
-/**
- * @fileName    : AbstractMapper.java
- * @description : 전역 공통 Mapper
- */
-public abstract class AbstractMapper {
-
-    private SqlSession sqlSession;
-
-    public AbstractMapper(SqlSession sqlSession) {
+@Component
+public class TxMapper {
+	
+	//private SqlSessionFactory sessionFty;
+	//private SqlSessionTemplate sqlSessionTmp;
+	private SqlSession sqlSession;
+	
+    //public TxMapper(SqlSessionFactory sessionFty, boolean autoCommit) {
+	public TxMapper(SqlSession sqlSession) {
+        //this.sqlSession =  sessionFty.openSession(autoCommit);
         this.sqlSession = sqlSession;
     }
-    
-    public void AbstractMapperTx(SqlSession sqlSession) {
-        this.sqlSession = sqlSession;
-    }
-
+	
     public void procCommit() {
         this.sqlSession.commit();
     }
@@ -83,5 +80,4 @@ public abstract class AbstractMapper {
     public <E> Cursor<E> selectCursor(String queryId, Object parameterObject) {
         return this.sqlSession.selectCursor(queryId, parameterObject);
     }
-
 }

@@ -2,10 +2,11 @@ package skcnc.framework.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import skcnc.framework.database.DbioMapperbatis;
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppRequest;
 import skcnc.framework.model.AppResponse;
+import skcnc.framework.txmang.TxDbConnect;
+import skcnc.framework.txmang.TxMapper;
 import skcnc.framework.utils.MapperUtil;
 
 public abstract class AppCommonService {
@@ -13,18 +14,18 @@ public abstract class AppCommonService {
     protected FileMessageSource message;
 
     //core DB만.
-    @Autowired
-    protected DbioMapperbatis dbio;
-
-	//@PersistenceContext
-	//private EntityManager em;
+    //@Autowired
+    //protected DbioMapperbatis dbio;
+    protected TxDbConnect clientTx;
     
-	//@Autowired
-	//#private EntityManagerFactory emf;
+    protected TxMapper dbio;
+    
+    public AppCommonService() {
 
-	//@Autowired
-	//private JpaTransactionManager transactionManager;
-	
+    	clientTx = ContextStoreHelper.getData( ContextStoreHelper.TX_CLIENT, TxDbConnect.class );
+    	dbio = new TxMapper( clientTx.getSession() );
+    }
+    
     /**
      * @Method Name : makeException
      * @description : 실패 응답시 실패 사유에 해당하는 Exception을 만들어 반환한다.

@@ -14,7 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ContextStoreHelper {
 
     public static final String API_LOG_NAME = "api_log";
-    public static final String API_URL_KEY = "api_url";
+    public static final String API_URL_KEY  = "api_url";
+    
+    
+    public static final String TX_CLIENT  = "tx_client";
+    public static final String TX_SESSION = "tx_Session";
 
     private static final ThreadLocal<Map<String,Object>> store = new NamedInheritableThreadLocal<>("ContextStore");
     private static final ThreadLocal<Logger> log = new ThreadLocal<>();

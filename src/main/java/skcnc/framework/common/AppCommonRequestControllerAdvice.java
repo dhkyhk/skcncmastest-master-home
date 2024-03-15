@@ -107,7 +107,7 @@ public class AppCommonRequestControllerAdvice implements RequestBodyAdvice {
         //추적 아이디를 logger 공통적으로 사용되도록 설정
         MDC.put("GUID", ch.getGuid());
         MDC.put("TRACE_ID", url );
-
+        
         Logger inoutLog = LoggerFactory.getLogger( FILE_INOUT );
         inoutLog.debug( "{} input  : {} ", url.substring(1), appRequest );
 

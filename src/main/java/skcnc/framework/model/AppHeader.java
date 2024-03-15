@@ -31,7 +31,10 @@ public class AppHeader {
 
     @Schema(description = "Global UID", example = "GUID")
     private String guid;
-
+    
+    @Schema(description = "처음 호출시 Y, 서비스간 호출시 N", example = "Y")
+    private String startyn;
+    
     @Schema(description = "거래 분류 Q:조회 I:입력", example = "Q", allowableValues = "Q, I" )
     private String trd_cd;
 

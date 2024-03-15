@@ -25,6 +25,8 @@ public class SecurityConfig {
 			, "/ac/auth/**"
 			, "/rp/auth/**"
 			, "/test/**"    //테스트용
+			, "/demo1/**"   //TX 테스트용1
+			, "/demo2/**"   //TX 테스트용1
 			, "/swagger-resources/**"
 			, "/swagger-ui/**"
 			, "/v3/api-docs/**"

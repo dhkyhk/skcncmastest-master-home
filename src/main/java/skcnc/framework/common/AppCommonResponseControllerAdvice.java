@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppResponse;
+import skcnc.framework.txmang.TxDbConnect;
 
 @RestControllerAdvice
 public class AppCommonResponseControllerAdvice implements ResponseBodyAdvice<AppResponse<?>> {
@@ -65,9 +66,16 @@ public class AppCommonResponseControllerAdvice implements ResponseBodyAdvice<App
         }
 
         Logger inoutLog = LoggerFactory.getLogger( FILE_INOUT );
-        String url = ContextStoreHelper.getData( ContextStoreHelper.API_URL_KEY, String.class);
+        String url      = ContextStoreHelper.getData( ContextStoreHelper.API_URL_KEY, String.class);
         inoutLog.debug( "{} output : {} ", url.substring(1) , body  );
 
+        TxDbConnect clientTx = ContextStoreHelper.getData( ContextStoreHelper.TX_CLIENT, TxDbConnect.class );
+        
+        if ( clientTx.getSubCall() ) {
+        	//TODO : sub call 처리
+        } 
+        clientTx.procCommit();
+        
         ContextStoreHelper.clear();
 
         return body;

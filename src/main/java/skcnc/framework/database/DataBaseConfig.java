@@ -69,8 +69,7 @@ public class DataBaseConfig {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(datasource());
 		sqlSessionFactoryBean.setTypeAliasesPackage("skcnc.stockcore");
-		sqlSessionFactoryBean
-				.setMapperLocations(applicationContext.getResources("classpath*:/skcnc/stockcore/**/dao/mapper/*Mapper.xml"));
+		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/skcnc/stockcore/**/dao/mapper/*Mapper.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}
 	
@@ -78,64 +77,6 @@ public class DataBaseConfig {
     @Bean(name = "sessionTemplate")
     SqlSessionTemplate sqlSessionTemplate(
             @Qualifier("sessionFactory") SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
+    	return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
-
-/*
-@EnableJpaRepositories(
-	    basePackages="skcnc.stockcore.**.dao",  //repository를 관리할 패키지 명시
-	    entityManagerFactoryRef = "entityManagerFactory", //EntityManagerFactory
-	    transactionManagerRef = "transactionManager") // transactionManager
-public class DataBaseConfig {
-	private static final String DEFAULT_NAMING_STRATEGY
-		= "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy";
-	
-	@Bean
-	@Primary //해당 Bean을 우선적으로 선택하도록 하는 annotation
-	DataSource defaultDataSource() {
-		HikariConfig dataSourceConfig = new HikariConfig();
-		dataSourceConfig.setDriverClassName("org.postgresql.Driver");
-	    dataSourceConfig.setJdbcUrl("jdbc:postgresql://db-msa-common.cbi24uq0o69d.ap-northeast-2.rds.amazonaws.com:5432/postgres");
-	    dataSourceConfig.setUsername("postgres");
-	    dataSourceConfig.setPassword("asdfg12345");
-	    dataSourceConfig.setMaximumPoolSize(10);
-	    dataSourceConfig.setMinimumIdle(5);
-	    dataSourceConfig.setMaxLifetime(1200000);
-	    dataSourceConfig.setConnectionTimeout(20000	);
-	    dataSourceConfig.setIdleTimeout(300000);
-	    
-	    return new HikariDataSource(dataSourceConfig);
-	}
-	
-	@Bean(name = "entityManagerFactory")
-	@Primary
-	LocalContainerEntityManagerFactoryBean entityManagerFactory(
-	    EntityManagerFactoryBuilder builder) {
-	
-		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource( defaultDataSource() );
-        em.setPackagesToScan( new String[] { "skcnc.stockcore.**.dao" });
-
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        HashMap<String, Object> properties = new HashMap<>();
-        
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
-        properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.format_sql", true);
-        properties.put("hibernate.user_sql_comments", true);
-        
-        properties.put("hibernate.hbm2ddl.auto", "none");
-        em.setJpaPropertyMap(properties);
-	 
-        return em;
-	}
-
-	@Primary
-	@Bean(name = "transactionManager")
-	PlatformTransactionManager transactionManager(
-	    EntityManagerFactoryBuilder builder) {
-	  return new JpaTransactionManager(entityManagerFactory(builder).getObject());
-	}
-}*/
