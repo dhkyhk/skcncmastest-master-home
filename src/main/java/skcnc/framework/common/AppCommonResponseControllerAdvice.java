@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppResponse;
 import skcnc.framework.txmang.TxDbConnect;
+import skcnc.framework.txmang.TxMangMain;
 
 @RestControllerAdvice
 public class AppCommonResponseControllerAdvice implements ResponseBodyAdvice<AppResponse<?>> {
@@ -71,10 +72,20 @@ public class AppCommonResponseControllerAdvice implements ResponseBodyAdvice<App
 
         TxDbConnect clientTx = ContextStoreHelper.getData( ContextStoreHelper.TX_CLIENT, TxDbConnect.class );
         
-        if ( clientTx.getSubCall() ) {
-        	//TODO : sub call 처리
+        if ( clientTx != null ) {
+        	Logger log = ContextStoreHelper.getLog();
+        	if ( AppHeader.RT_SUCCESS.equals(body.getHead().getNorl_yn()) ) {
+        		if ( clientTx.getFirst() ) {
+        			log.debug( "*** 정상처리!!" );
+            		clientTx.procCommit();
+            	} else {
+            		clientTx.setState( TxMangMain.TX_AFTER );
+            	}
+        	} else {
+        		log.error( "*** 에러처리!!" );
+        		clientTx.procRollback();
+        	}
         } 
-        clientTx.procCommit();
         
         ContextStoreHelper.clear();
 

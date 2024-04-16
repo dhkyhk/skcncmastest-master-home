@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.demo2.cad4000mapper">
+    <select id="selectcad4000one" parameterType="skcnc.framework.database.MetaHashMap" resultType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+SELECT  
+        dt
+     ,  regi_sno
+     ,  cif
+     ,  ac_no
+     ,  notf_ctdt_dcd
+     ,  post_no_sys_dcd
+     ,  post_no
+     ,  post_no_adr
+     ,  enc_post_no_ptcl_adr
+     ,  tel_area_no
+     ,  tel_ptcl_area_no
+     ,  enc_tel_nd_no
+     ,  mail
+     ,  notf_txt
+     ,  dey_yn
+     ,  sndb_yn
+     ,  opr_dttm
+     ,  opr_id
+     ,  opr_trd_id
+     ,  opr_tmn_id
+  FROM  CAD4000 A
+ WHERE  A.dt = #{dt}
+   AND  A.regi_sno = #{regi_sno}
+]]>
+    </select>
+    <insert id="insertcad4000one" parameterType="skcnc.framework.database.MetaHashMap">
+<![CDATA[
+INSERT 
+  INTO CAD4000
+(
+   dt
+,  regi_sno
+,  cif
+,  ac_no
+,  notf_ctdt_dcd
+,  post_no_sys_dcd
+,  post_no
+,  post_no_adr
+,  enc_post_no_ptcl_adr
+,  tel_area_no
+,  tel_ptcl_area_no
+,  enc_tel_nd_no
+,  mail
+,  notf_txt
+,  dey_yn
+,  sndb_yn
+     
+,  opr_dttm
+,  opr_id
+,  opr_trd_id
+,  opr_tmn_id
+)
+VALUES
+(
+   to_char(NOW(), 'yyyymmdd')
+,  (SELECT  COALESCE( MAX(regi_sno),0) + 1 
+      FROM  CAD4000 A
+     WHERE  dt = to_char(NOW(), 'yyyymmdd'))
+,  '1000000001'
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  ''
+,  'TEST'
+,  'N'
+,  'N'
+
+,  COALESCE( #{opr_dttm}, NOW() )
+,  #{opr_id}
+,  #{opr_trd_id}
+,  #{opr_tmn_id}
+)
+]]>
+    </insert>
+</mapper>

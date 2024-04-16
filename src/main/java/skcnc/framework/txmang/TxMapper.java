@@ -7,11 +7,12 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class TxMapper {
 	
 	//private SqlSessionFactory sessionFty;
 	//private SqlSessionTemplate sqlSessionTmp;
+	
 	private SqlSession sqlSession;
 	
     //public TxMapper(SqlSessionFactory sessionFty, boolean autoCommit) {

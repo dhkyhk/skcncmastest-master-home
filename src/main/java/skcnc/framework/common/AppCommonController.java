@@ -1,30 +1,29 @@
 package skcnc.framework.common;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppResponse;
-import skcnc.framework.txmang.TxDbConnect;
-import skcnc.framework.txmang.TxMangMain;
 
 public class AppCommonController {
 
     @Autowired
     private FileMessageSource message;
 
-    @Autowired
-    @Qualifier("sessionFactory")
-    private SqlSessionFactory sessionFactory;
+    //@Autowired
+    //@Qualifier("sessionFactory")
+    //private SqlSessionFactory sessionFactory;
     
-    @Autowired
-    private TxMangMain txmang;
+    //@Autowired
+    //private TxMangMain txmang;
     
+    
+    /*
     public AppCommonController() {
+    	//TODO : 확인하고 제대로 안되면 함수 추가해서 관리하자..
     	AppHeader ch = ContextStoreHelper.getData(AppHeader.ATTR_KEY, AppHeader.class );
     	
-    	TxDbConnect clientTx = txmang.getTxDb();
+    	TxDbConnect clientTx = txmang.getTxDb( ch.getGuid() );
     	
     	boolean bStart = true;
     	if ( !"Y".equals(ch.getStartyn()) ) {
@@ -34,7 +33,23 @@ public class AppCommonController {
 
     	ContextStoreHelper.setData( ContextStoreHelper.TX_CLIENT , clientTx );
     	ContextStoreHelper.setData( ContextStoreHelper.TX_SESSION, clientTx.getSession() );
-    }
+    }*/
+    
+    /*public void initTxManager() {
+    	//TODO : 확인하고 제대로 안되면 함수 추가해서 관리하자..
+    	AppHeader ch = ContextStoreHelper.getData(AppHeader.ATTR_KEY, AppHeader.class );
+    	
+    	TxDbConnect clientTx = txmang.getTxDb( ch.getGuid() );
+    	
+    	boolean bStart = true;
+    	if ( !"Y".equals(ch.getStartyn()) ) {
+    		bStart = false;
+    	}
+    	clientTx.setGuid(ch.getGuid(), bStart);
+
+    	ContextStoreHelper.setData( ContextStoreHelper.TX_CLIENT , clientTx );
+    	ContextStoreHelper.setData( ContextStoreHelper.TX_SESSION, clientTx.getSession() );
+    }*/
     
     /**
      * @Method Name : makeResponse

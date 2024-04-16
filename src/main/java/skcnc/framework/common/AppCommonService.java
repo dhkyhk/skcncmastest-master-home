@@ -2,11 +2,12 @@ package skcnc.framework.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import skcnc.framework.database.DbioMapperbatis;
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppRequest;
 import skcnc.framework.model.AppResponse;
 import skcnc.framework.txmang.TxDbConnect;
-import skcnc.framework.txmang.TxMapper;
+import skcnc.framework.txmang.TxMangMain;
 import skcnc.framework.utils.MapperUtil;
 
 public abstract class AppCommonService {
@@ -14,16 +15,35 @@ public abstract class AppCommonService {
     protected FileMessageSource message;
 
     //core DB만.
-    //@Autowired
-    //protected DbioMapperbatis dbio;
+    @Autowired
+    protected DbioMapperbatis dbio;
+    //protected TxDbConnect clientTx;
+    
+    //protected TxMapper dbio;
+    
+    @Autowired
+    private TxMangMain txmang;
+    
     protected TxDbConnect clientTx;
     
-    protected TxMapper dbio;
-    
-    public AppCommonService() {
+    public void initTxManager() {
+    	
+        	//TODO : 확인하고 제대로 안되면 함수 추가해서 관리하자..
+        	AppHeader ch = ContextStoreHelper.getData(AppHeader.ATTR_KEY, AppHeader.class );
+        	
+        	this.clientTx = txmang.getTxDb( ch.getGuid() );
+        	
+        	boolean bStart = true;
+        	if ( !"Y".equals(ch.getStartyn()) ) {
+        		bStart = false;
+        	}
+        	clientTx.setGuid(ch.getGuid(), bStart);
 
-    	clientTx = ContextStoreHelper.getData( ContextStoreHelper.TX_CLIENT, TxDbConnect.class );
-    	dbio = new TxMapper( clientTx.getSession() );
+        	ContextStoreHelper.setData( ContextStoreHelper.TX_CLIENT , clientTx );
+        	ContextStoreHelper.setData( ContextStoreHelper.TX_SESSION, clientTx.getSession() );
+    		
+        	//clientTx = ContextStoreHelper.getData( ContextStoreHelper.TX_CLIENT, TxDbConnect.class );
+        	//dbio = new TxMapper( clientTx.getSession() );
     }
     
     /**

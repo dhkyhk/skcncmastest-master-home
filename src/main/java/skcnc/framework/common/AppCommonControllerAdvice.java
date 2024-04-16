@@ -25,6 +25,7 @@ import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import skcnc.framework.model.AppHeader;
 import skcnc.framework.model.AppResponse;
+import skcnc.framework.txmang.TxDbConnect;
 import skcnc.framework.utils.HexUtil;
 
 //@RestControllerAdvice(basePackages = {GlobalConfig.BASE_PACKAGE + ".appapi", GlobalConfig.BASE_PACKAGE + ".demoapi", GlobalConfig.BASE_PACKAGE + ".framework"})
@@ -83,7 +84,7 @@ public class AppCommonControllerAdvice {
         }else {
             log.error("### BadRequest Exception ###\n@request : {}", request, ex);
         }
-
+        
         String msgCd = "MYER0008"; //잘못된 요청입니다.
         return AppResponse.create((AppHeader) null, AppHeader.RT_FAIL, msgCd, messageSource.getMessage(msgCd), null);
     }

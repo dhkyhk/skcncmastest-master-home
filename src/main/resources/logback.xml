@@ -149,6 +149,7 @@
     </logger>
 
     <logger name="TX_MANAGER" level="DEBUG" additivity="false">
+        <appender-ref ref="api_console"/>
         <appender-ref ref="TOTAL_TRANSATION"/>
     </logger>
 

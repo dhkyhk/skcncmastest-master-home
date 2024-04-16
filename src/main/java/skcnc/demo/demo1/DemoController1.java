@@ -25,6 +25,7 @@ public class DemoController1 extends AppCommonController{
 	@PostMapping("/test1")
 	public AppResponse<DemoVO> procTest1(@RequestBody AppRequest<DemoVO> inData)
 	{
+		//initTxManager();
 		return demoService1.procTest1(inData);
 		//return makeResponse(inData.getHead(), inData.getBody(), "MYOK1001", "DEMO" );
 	}

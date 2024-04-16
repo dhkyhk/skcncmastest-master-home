@@ -9,8 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import skcnc.framework.common.ContextStoreHelper;
 import skcnc.framework.model.AppRequest;
+import skcnc.framework.model.AppResponse;
 
 @Component
 //@Service
@@ -21,13 +24,15 @@ public class ApiSendModule {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	//@Qualifier("appObjectMapper")
-	//@Autowired
-	//private ObjectMapper objectMapper;
+	@Qualifier("appObjectMapper")
+	@Autowired
+	private ObjectMapper objectMapper;
 	
-	public Object callRestApi(String url, AppRequest sendData) {   
+	public AppResponse callRestApi(String url, AppRequest sendData) {
 
 		Logger log = ContextStoreHelper.getLog();
+		
+		log.debug( "***  호출 url : {}", url );
 		
 		StringBuffer uriBuilder = new StringBuffer(url );
 		
@@ -43,6 +48,6 @@ public class ApiSendModule {
 
 		ResponseEntity<Object> response = restTemplate.exchange(uriBuilder.toString(), HttpMethod.POST, request, Object.class);
 		
-		return response.getBody();
+		return objectMapper.convertValue(response.getBody(), AppResponse.class );
 	}
 }
